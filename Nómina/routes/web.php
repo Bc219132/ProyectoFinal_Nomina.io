@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/games', function(){
-    return "Exitoooo";
-});
+Route::get('/Login', [LoginController::class,'index']);
 
-Route::get('/games/{name_game}', function($name_game){
-    return "Bienvenido a la página:".$name_game;
-});
+Route::get('/games/create', [LoginController::class,'create']);
+
+Route::get('/games/{name_game}/{categoria?}', [LoginController::class,'help']);
