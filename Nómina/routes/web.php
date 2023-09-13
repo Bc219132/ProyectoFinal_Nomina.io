@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SesionController;
+use App\Http\Controllers\RegistroController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +16,31 @@ use App\Http\Controllers\LoginController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('principal');
+})->middleware('auth');
 
-Route::get('/Login', [LoginController::class,'index']);
 
-Route::get('/games/create', [LoginController::class,'create']);
+/*REGISTRO*/
 
-Route::get('/games/{name_game}/{categoria?}', [LoginController::class,'help']);
+Route::get('/Registro', [RegistroController::class,'create']) 
+    ->middleware('auth')
+    ->name('Registro.index');
+Route::post('/Registro', [RegistroController::class,'store']) 
+    ->name('Registro.Store');
+
+
+/*INICIO DE SESION*/
+
+Route::get('/Login', [SesionController::class,'create']) 
+    ->middleware('guest')    
+    ->name('Login.index');
+Route::post('/Login', [SesionController::class,'store']) 
+    ->name('Login.Store');
+
+/*CERRAR SESION*/
+
+Route::get('/Logout', [SesionController::class,'destroy']) 
+    ->middleware('auth')   
+    ->name('Login.destroy');
+
+

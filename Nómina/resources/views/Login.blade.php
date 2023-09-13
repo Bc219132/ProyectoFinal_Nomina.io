@@ -25,44 +25,53 @@
             class="img-fluid" alt="Sample image">
         </div>
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-          <form>
-            <H1>Sistema de Nómina</H1>
+
+          <H1>Sistema de Nómina</H1>
+          
+          <form class="mt-4" method="POST" action="">
+            @csrf
+
             <div class="divider d-flex align-items-center my-4">
               <p class="text-center fw-bold mx-3 mb-0">Registro de credenciales</p>
             </div>
   
-            <!-- Email input -->
+            <!-- Usuario -->
             <div class="form-outline mb-4">
-              <input type="text" name="Nombre_Usuario" id="form3Example3" class="form-control form-control-lg"
-                placeholder="Usuario"/>
+              <input type="text" name="Nombre_Usuario" id="Nombre_Usuario" class="form-control form-control-lg"
+                placeholder="Nombre_Usuario"/>
               <label class="form-label" for="form3Example3">Usuario Registrado</label>
             </div>
   
-            <!-- Password input -->
+            <!-- Contraseña -->
             <div class="form-outline mb-3">
-              <input type="password" name="Contraseña" id="form3Example4" class="form-control form-control-lg"
-                placeholder="Contraseña" />
+              <input type="password" name="password" id="password" class="form-control form-control-lg"
+                placeholder="password"/>
               <label class="form-label" for="form3Example4">Contraseña</label>
+
+              @error('message')
+                <p class="border border-red-500 rounded-md bg-red-100 w-full 
+                text-red-600 p-2 my-2">*Error Usuario o Contraseña Errada, por favor verificar*</p>
+              @enderror
+
             </div>
-  
+
             <div class="d-flex justify-content-between align-items-center">
-              <!-- Checkbox -->
+              <!-- Recordar_SinFunción -->
               <div class="form-check mb-0">
                 <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
                 <label class="form-check-label" for="form2Example3">
                   Recordar
                 </label>
               </div>
-             
             </div>
-  
+
             <div class="text-center text-lg-start mt-4 pt-2">
-              <button type="button" class="btn btn-primary btn-lg"
+              <button type="submit" class="btn btn-primary btn-lg"
                 style="padding-left: 2.5rem; padding-right: 2.5rem;">Iniciar sesión</button>
-          
             </div>
   
           </form>
+
         </div>
       </div>
     </div>
