@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SesionController;
 use App\Http\Controllers\RegistroController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ConsulController;
+use App\Http\Controllers\EjecController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +19,7 @@ use App\Http\Controllers\RegistroController;
 */
 
 Route::get('/', function () {
-    return view('principal');
+    return view('Login');
 })->middleware('auth');
 
 
@@ -42,5 +45,24 @@ Route::post('/Login', [SesionController::class,'store'])
 Route::get('/Logout', [SesionController::class,'destroy']) 
     ->middleware('auth')   
     ->name('Login.destroy');
+
+/*INICIO DE SESION ADMINITRADOR*/
+
+Route::get('/Admin', [AdminController::class, 'index'])
+    ->middleware('auth.Admin')  
+    ->name('Admin.index');
+
+/*INICIO DE SESION CONSULTOR*/
+
+Route::get('/Consul', [ConsulController::class, 'index'])
+    ->middleware('auth.Consul')  
+    ->name('Consul.index');
+
+/*INICIO DE SESION EJECUTOR*/
+
+Route::get('/Ejec', [EjecController::class, 'index'])
+    ->middleware('auth.Ejec')  
+    ->name('Ejec.index');
+
 
 
