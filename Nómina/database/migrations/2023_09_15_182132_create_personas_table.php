@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('personas', function (Blueprint $table) {
             $table->id();
             $table->string('PrimerNombre');
-            $table->string('SegundoNombre');
+            $table->string('SegundoNombre')->nullable();
             $table->string('PrimerApellido');
-            $table->string('SegundoApellido');
+            $table->string('SegundoApellido')->nullable();
             $table->string('Cedula')->unique();
             $table->string('RIF')->unique();
             $table->string('FechaNacimiento');

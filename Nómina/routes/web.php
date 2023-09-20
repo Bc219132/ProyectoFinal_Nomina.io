@@ -20,7 +20,7 @@ use App\Http\Controllers\PersonaController;
 */
 
 Route::get('/', function () {
-    return view('Login');
+    return view('Registro');
 })->middleware('auth');
 
 
@@ -65,14 +65,10 @@ Route::get('/Ejec', [EjecController::class, 'index'])
     ->middleware('auth.Ejec')  
     ->name('Ejec.index');
 
-
-
     /******VISTAR CRUP ADMINISTRATIVO******/
 
-/*Route::get('/persona', function () {
-        return view('persona.index');
-});
-Route::get('/persona/create', [PersonaController::class, 'create']);*/
 Route::resource('persona',PersonaController::class);
+
+
 
 
