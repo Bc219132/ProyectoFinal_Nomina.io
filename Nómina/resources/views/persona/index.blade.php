@@ -22,24 +22,28 @@
         <thead class="thed-light">
             <tr>
                 <tr></tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
+                <th>Nombre y Apellido</th>
                 <th>Cédula</th>
                 <th>Gerencia</th>
                 <th>Cargo</th>
-                <th>Acciones</th>
+                <th>Fecha de Ingreso</th>
+                <th>Fecha de Egreso</th>
             </tr>
         </thead>
         <tbody>
             @foreach( $personas as $persona)
                 <tr>
-                    <td>{{$persona->PrimerNombre }}</td>
-                    <td>{{$persona->PrimerApellido }}</td>
-                    <td>{{$persona->Cedula}}</td>
-                    <td>{{$persona->Cedula}}</td>
-                    <td>{{$persona->Cedula}}</td>
                     <td>
-                        <a href="{{ url('/persona/'.$persona->id.'/edit') }}" class="btn btn-warning">
+                    <a href="{{url(('/persona/'.$persona->id.'/edit'))}}">{{$persona->PrimerNombre }}</a>
+                    <a href="{{url(('/persona/'.$persona->id.'/edit'))}}">{{$persona->PrimerApellido }}</a>
+                    </td>
+                    <td>{{$persona->Cedula }}</td>
+                    <td>{{$persona->Cedula }}</td>
+                    <td>{{$persona->Cedula }}</td>
+                    <td>{{$persona->Cedula }}</td>
+                    <td>{{$persona->Cedula }}</td>
+                    <!-- <td>
+                       <a href="{{ url('/persona/'.$persona->id.'/edit') }}" class="btn btn-warning">
                             Editar
                         </a>
                          | 
@@ -54,7 +58,7 @@
                             Detalle
                         </a>
                     
-                    </td>
+                    </td>-->
 
                 </tr>
             @endforeach

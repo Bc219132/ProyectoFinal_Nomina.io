@@ -27,6 +27,12 @@ class DatabaseSeeder extends Seeder
         //Banco
         $this->call(BancoSeeder::class);
 
+        //Sueldo
+        $this->call(SueldoSeeder::class);
+
+        //Cargo
+        $this->call(CargoSeeder::class);
+
         //usuario Maestro
         $user = new User;
         $user->Nombre_Usuario = 'AdminSecurity';

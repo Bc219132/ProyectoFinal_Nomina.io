@@ -17,6 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('TipoCargo');
             $table->string('NivelGrado');
+            $table->foreignId('id_sueldo')
+                  ->nullable()
+                  ->constrained('sueldo')
+                  ->cascadeOnUpdate()
+                  ->nullOnDelete();
             $table->timestamps();
         });
     }
