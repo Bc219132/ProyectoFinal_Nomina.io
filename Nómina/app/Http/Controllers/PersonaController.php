@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Persona;
+use App\Models\Generos;
 
 class PersonaController extends Controller
 {
@@ -13,7 +14,8 @@ class PersonaController extends Controller
     }
 
     public function create(){
-            return view('persona.create');
+        $generos = Generos::all();
+        return view('persona.create', compact('generos'));
     }
 
     
@@ -26,9 +28,9 @@ class PersonaController extends Controller
     }
 
     public function edit($id){
-
+        $generos = Generos::all();
         $persona=Persona::findOrFail($id);
-        return view('persona.edit', compact('persona'))->with('mensaje','Empleado Editado exitosamente');;
+        return view('persona.edit', compact('persona'), compact('generos'))->with('mensaje','Empleado Editado exitosamente');;
     }
 
     public function update(Request $request, $id){

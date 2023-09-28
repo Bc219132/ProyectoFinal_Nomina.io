@@ -3,15 +3,18 @@
 @section('title', 'Registro')
 
 @section('Contenido')
-    
-    <h2>REGRISTRO DE NUEVO EMPLEADO</h2>
-    
+    <ul>
+        <i>
+            <h2>REGISTRO DE NUEVO EMPLEADO</h2>
+        </i>   
 
-        <form action="{{ url('/persona')}}" method="post" >
+        <br><br>
+
+        <form action="{{ url('/persona')}}" method="post" class="form-inline">
             @csrf
-
             <br><br><br>
-            @include('persona.form',['modo'=>'Agregar']);
+            @include('persona.form',['modo'=>'Agregar'])
+        
         </form>
-
+    </ul>
 @endsection

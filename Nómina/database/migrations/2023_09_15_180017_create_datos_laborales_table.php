@@ -30,6 +30,11 @@ return new class extends Migration
                   ->constrained('cargo')
                   ->cascadeOnUpdate()
                   ->nullOnDelete();
+            $table->foreignId('id_gerencia')
+                  ->nullable()
+                  ->constrained('gerencia')
+                  ->cascadeOnUpdate()
+                  ->nullOnDelete();
             $table->timestamps();
         });
     }

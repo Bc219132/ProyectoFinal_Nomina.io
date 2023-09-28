@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ConsulController;
 use App\Http\Controllers\EjecController;
 use App\Http\Controllers\PersonaController;
+use App\Http\Controllers\LaboralesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,11 +66,14 @@ Route::get('/Ejec', [EjecController::class, 'index'])
     ->middleware('auth.Ejec')  
     ->name('Ejec.index');
 
+Route::resource('user',RegistroController::class);
+
     /******VISTA CRUPN ADMINISTRATIVO******/
 
 Route::resource('persona',PersonaController::class);
+Route::resource('laborales',LaboralesController::class);
 
-Route::resource('user',RegistroController::class);
+
 
 
 

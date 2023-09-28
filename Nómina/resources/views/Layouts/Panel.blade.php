@@ -235,15 +235,11 @@
               </a>
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="{{url('persona')}}">Listado</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('persona')}}"> Listado y Registro </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> Movimientos Internos </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('persona/laborales')}}"> Proceso Datos Laborales </a></li>
                 </ul>
               </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pages/icons/mdi.html">
-                <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
-                <span class="menu-title">Icons</span>
-              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="pages/forms/basic_elements.html">
@@ -276,12 +272,27 @@
                 </ul>
               </div>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">
+                <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
+                <span class="menu-title">Página Configuraciones</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="ui-basic2">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> Agregar Nuevo Género </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> Agregar Nuevo Banco </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> Agregar Nueva Gerencia </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> Agregar Nuevo Cargo </a></li>
+                </ul>
+              </div>
+            </li>
             <li class="nav-item documentation-link">
-              <a class="nav-link" href="http://www.bootstrapdash.com/demo/connect-plus-free/jquery/documentation/documentation.html" target="_blank">
+              <a class="nav-link" href="https://altussolutions.net/" target="_blank">
                 <span class="icon-bg">
                   <i class="mdi mdi-file-document-box menu-icon"></i>
                 </span>
-                <span class="menu-title">Documentation</span>
+                <span class="menu-title">Conócenos más</span>
               </a>
             </li>
             <li class="nav-item sidebar-user-actions">

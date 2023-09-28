@@ -38,16 +38,16 @@
             placeholder="Confirmar Contraseña"/>
             <label class="form-label" for="form3Example4">Confirmar Contraseña</label>
 
-            <!-- Rol-->
+            <!-- Rol -->
 
-            <select name="id_roles" id="id_roles" class="form-control form-control-lg">
-                  <option value="1">Administrador</option>
-                  <option value="2">Ejecutor</option>
-                  <option value="3">Consultor</option>
+            <select name="id_roles" class="form-control" id="id_roles">
+               @foreach ($roles as $rol)
+                <option value="{{$rol['id'] }}">{{ $rol['Tipo_Rol']}}</option>
+               @endforeach
             </select>
-            <label class="form-label" for="form3Example4">Rol para Asiganar</label>
+            <label class="form-label" for="form3Example4">Rol a Asiganar</label>
             
-            @error('Rol')
+            @error('Roles')
               <p class="border border-red-500 rounded-md bg-red-100 w-full 
               text-red-600 p-2 my-2">* {{ $message }} </p>
             @enderror

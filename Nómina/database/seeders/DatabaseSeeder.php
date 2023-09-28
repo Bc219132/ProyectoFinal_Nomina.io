@@ -33,6 +33,9 @@ class DatabaseSeeder extends Seeder
         //Cargo
         $this->call(CargoSeeder::class);
 
+        //Gerencia
+        $this->call(GerenciaSeeder::class);
+
         //usuario Maestro
         $user = new User;
         $user->Nombre_Usuario = 'AdminSecurity';

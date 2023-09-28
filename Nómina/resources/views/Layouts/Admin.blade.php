@@ -237,7 +237,7 @@
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{url('persona')}}"> Listado y Registro </a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> Movimientos Internos </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> Proceso Datos Laborales </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('laborales')}}"> Proceso Datos Laborales </a></li>
                 </ul>
               </div>
             </li>
