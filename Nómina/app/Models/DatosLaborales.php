@@ -19,5 +19,6 @@ class DatosLaborales extends Model
         'NivelAcademico',
         'id_cargo',
         'id_gerencia',
+        'id_personas',
         ];
 }

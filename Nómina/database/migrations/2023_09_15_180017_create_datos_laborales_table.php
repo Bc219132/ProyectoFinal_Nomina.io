@@ -35,6 +35,11 @@ return new class extends Migration
                   ->constrained('gerencia')
                   ->cascadeOnUpdate()
                   ->nullOnDelete();
+            $table->foreignId('id_personas')
+                  ->nullable()
+                  ->constrained('personas')
+                  ->cascadeOnUpdate()
+                  ->nullOnDelete();
             $table->timestamps();
         });
     }

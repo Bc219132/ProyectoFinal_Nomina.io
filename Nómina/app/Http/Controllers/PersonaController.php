@@ -24,7 +24,7 @@ class PersonaController extends Controller
         //$datosPersona = request()->all();
         $datosPersona = request()->except('_token');
         Persona::insert($datosPersona);
-        return redirect('persona')->with('mensaje','Empleado Agregado exitosamente');
+        return redirect('laboral/create')->with('mensaje','Empleado Agregado exitosamente');
     }
 
     public function edit($id){

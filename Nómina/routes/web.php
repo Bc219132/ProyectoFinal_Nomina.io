@@ -71,7 +71,10 @@ Route::resource('user',RegistroController::class);
     /******VISTA CRUPN ADMINISTRATIVO******/
 
 Route::resource('persona',PersonaController::class);
-Route::resource('laborales',LaboralesController::class);
+
+Route::resource('laboral',LaboralesController::class);
+
+
 
 
 
