@@ -27,57 +27,50 @@ Route::get('/', function () {
 
 /*REGISTRO*/
 
-Route::get('/Registro', [RegistroController::class,'create']) 
+Route::get('/Registro', [RegistroController::class, 'create'])
     ->middleware('auth')
     ->name('Registro.index');
-Route::post('/Registro', [RegistroController::class,'store']) 
+Route::post('/Registro', [RegistroController::class, 'store'])
     ->name('Registro.Store');
 
 
 /*INICIO DE SESION*/
 
-Route::get('/Login', [SesionController::class,'create']) 
-    ->middleware('guest')    
+Route::get('/Login', [SesionController::class, 'create'])
+    ->middleware('guest')
     ->name('Login.index');
-Route::post('/Login', [SesionController::class,'store']) 
+Route::post('/Login', [SesionController::class, 'store'])
     ->name('Login.Store');
 
 /*CERRAR SESION*/
 
-Route::get('/Logout', [SesionController::class,'destroy']) 
-    ->middleware('auth')   
+Route::get('/Logout', [SesionController::class, 'destroy'])
+    ->middleware('auth')
     ->name('Login.destroy');
 
 /*INICIO DE SESION ADMINITRADOR*/
 
 Route::get('/Admin', [AdminController::class, 'index'])
-    ->middleware('auth.Admin')  
+    ->middleware('auth.Admin')
     ->name('Admin.index');
 
 /*INICIO DE SESION CONSULTOR*/
 
 Route::get('/Consul', [ConsulController::class, 'index'])
-    ->middleware('auth.Consul')  
+    ->middleware('auth.Consul')
     ->name('Consul.index');
 
 /*INICIO DE SESION EJECUTOR*/
 
 Route::get('/Ejec', [EjecController::class, 'index'])
-    ->middleware('auth.Ejec')  
+    ->middleware('auth.Ejec')
     ->name('Ejec.index');
 
-Route::resource('user',RegistroController::class);
+Route::resource('user', RegistroController::class);
 
-    /******VISTA CRUPN ADMINISTRATIVO******/
+/******VISTA CRUPN ADMINISTRATIVO******/
 
-Route::resource('persona',PersonaController::class);
+Route::resource('persona', PersonaController::class);
 
-Route::resource('laboral',LaboralesController::class);
-
-
-
-
-
-
-
-
+Route::get('laborales', [LaboralesController::class, 'index']);
+Route::resource('persona.laboral', LaboralesController::class)->shallow();

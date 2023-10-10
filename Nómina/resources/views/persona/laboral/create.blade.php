@@ -6,13 +6,13 @@
     <ul>
         <i>
             <h2>Proceso de Datos Laborales</h2>
-        </i>   
-        <form action="{{ url('/laboral')}}" method="post">
+        </i>
+        <form action="{{ url("/persona/$id/laboral")}}" method="post">
             @csrf
             @include('persona.laboral.form');
-            
+
 
         </form>
-        
+
     </ul>
 @endsection

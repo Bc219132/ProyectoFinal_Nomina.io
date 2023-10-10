@@ -22,5 +22,10 @@ class Persona extends Model
         'FechaNacimiento',
         'Nacionalidad',
         'id_generos',
-        ];
+    ];
+
+    public function laborData()
+    {
+        return $this->hasOne(DatosLaborales::class, 'id_personas');
+    }
 }

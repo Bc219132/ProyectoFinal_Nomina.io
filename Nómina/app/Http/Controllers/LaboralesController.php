@@ -12,43 +12,44 @@ use App\Models\Cargo;
 
 class LaboralesController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         //
-        $datos['laborales']=DatosLaborales::paginate(5);
-        return view('persona.laboral.index',$datos);
+        $datos['laborales'] = DatosLaborales::paginate(15);
+        return view('persona.laboral.index', $datos);
     }
 
-    public function create(){
+    public function create($id)
+    {
         //
-        return view('persona.laboral.create');
+        return view('persona.laboral.create', ['id' => $id]);
     }
 
-    
 
-    public function store(Request $request, $id){
+
+    public function store(Request $request, $id)
+    {
         //
-        $persona=Persona::findOrFail($id);
-
-        $post =new Post;
-        $post->id_personas = $request->input('persona');
-
+        $persona = Persona::findOrFail($id);
         $datoslaboral = request()->except('_token');
-        DatosLaborales::insert($datoslaboral);
-        return view('persona',compact('persona'));
-
+        $persona->laborData()->create($datoslaboral);
+        return redirect('persona');
     }
 
-    public function edit($id){
-       //
-       return view('persona.laboral.edit');
+    public function edit($id)
+    {
+        //
+        return view('persona.laboral.edit');
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
 
-       //
+        //
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         //
     }
 }

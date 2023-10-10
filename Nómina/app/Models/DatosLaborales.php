@@ -20,5 +20,10 @@ class DatosLaborales extends Model
         'id_cargo',
         'id_gerencia',
         'id_personas',
-        ];
+    ];
+
+    public function person()
+    {
+        return $this->belongsTo(Persona::class, 'id_personas');
+    }
 }
