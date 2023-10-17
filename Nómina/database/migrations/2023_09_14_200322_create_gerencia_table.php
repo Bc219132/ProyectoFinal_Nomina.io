@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('gerencia', function (Blueprint $table) {
+        Schema::create('gerencias', function (Blueprint $table) {
             $table->id();
             $table->string('TipoGerencia');
             $table->timestamps();

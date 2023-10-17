@@ -4,6 +4,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="cache-control" content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="0">
     <title>@yield('title') - SistemaNómina</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('assets/vendors/mdi/css/materialdesignicons.min.css')}}">
@@ -237,7 +240,7 @@
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{url('persona')}}"> Listado y Registro </a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> Movimientos Internos </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{url('persona/laborales')}}"> Proceso Datos Laborales </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('laborales')}}"> Proceso Datos Laborales </a></li>
                 </ul>
               </div>
             </li>
@@ -373,5 +376,12 @@
     <!-- Custom js for this page -->
     <script src="{{ asset('assets/js/dashboard.js')}}"></script>
     <!-- End custom js for this page -->
+
+    <script>
+      if (window.performance && window.performance.navigation.type === 2) {
+          // Detecta si la página se carga desde la caché al presionar el botón de retroceso
+          window.location.href = '/Login'; // página de inicio de sesión
+      }
+    </script>
   </body>
 </html>

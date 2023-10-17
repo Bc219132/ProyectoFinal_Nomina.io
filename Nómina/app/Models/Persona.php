@@ -20,7 +20,7 @@ class Persona extends Model
         'Cedula',
         'RIF',
         'FechaNacimiento',
-        'Nacionalidad',
+        'TipoDocumento',
         'id_generos',
     ];
 

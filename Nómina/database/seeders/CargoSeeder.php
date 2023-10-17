@@ -15,10 +15,9 @@ class CargoSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cargo')->insert([
+        DB::table('cargos')->insert([
             'id' => '1',
             'TipoCargo' => 'Analista 1',
-            'NivelGrado' => '5',
             'id_sueldo' => '1',
         ]);
     }

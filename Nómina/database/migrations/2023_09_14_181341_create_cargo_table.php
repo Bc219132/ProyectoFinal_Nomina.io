@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cargo', function (Blueprint $table) {
+        Schema::create('cargos', function (Blueprint $table) {
             $table->id();
             $table->string('TipoCargo');
-            $table->string('NivelGrado');
             $table->foreignId('id_sueldo')
                   ->nullable()
-                  ->constrained('sueldo')
+                  ->constrained('sueldos')
                   ->cascadeOnUpdate()
                   ->nullOnDelete();
             $table->timestamps();

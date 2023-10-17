@@ -17,7 +17,7 @@ class ConsulAuth
     public function handle(Request $request, Closure $next){
         
         if(auth()->check()){
-            if(auth()->user()->id_roles == '3'){
+            if(auth()->user()->id_roles == '2'){
                 return $next($request);     
             }  
         }

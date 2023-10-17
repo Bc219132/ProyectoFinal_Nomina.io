@@ -17,6 +17,8 @@ class DatosLaborales extends Model
         'TipoCuenta',
         'FechaIngreso',
         'NivelAcademico',
+        'FechaEgreso',
+        'Estatus',
         'id_cargo',
         'id_gerencia',
         'id_personas',

@@ -42,7 +42,7 @@
                     <td>{{$persona->Cedula }}</td>
                     <td>{{$persona->Cedula }}</td>
                     <td>{{$persona->Cedula }}</td>
-                    <!-- <td>
+                    <td>
                        <a href="{{ url('/persona/'.$persona->id.'/edit') }}" class="btn btn-warning">
                             Editar
                         </a>
@@ -57,14 +57,16 @@
                         </a> | <a href="{{ url('#') }}" class="btn btn-light">
                             Detalle
                         </a>
-                    
-                    </td>-->
-
+                    </td>
                 </tr>
             @endforeach
         </tbody>    
 
     </table>    
 
-    
+    <script>
+        window.addEventListener('popstate', function (event) {
+            window.history.pushState(null, document.title, window.location.href);
+        });
+    </script>
 @endsection

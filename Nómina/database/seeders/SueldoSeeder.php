@@ -15,7 +15,7 @@ class SueldoSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('sueldo')->insert([
+        DB::table('sueldos')->insert([
             'id' => '1',
             'Sueldo' => '2000',
             'CestaTikect' => '1000',

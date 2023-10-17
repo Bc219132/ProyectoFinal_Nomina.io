@@ -18,21 +18,23 @@ return new class extends Migration
             $table->string('TipoContrato');
             $table->foreignId('id_banco')
                   ->nullable()
-                  ->constrained('banco')
+                  ->constrained('bancos')
                   ->cascadeOnUpdate()
                   ->nullOnDelete();
             $table->string('NCuentaBancaria');
             $table->string('TipoCuenta');
             $table->string('FechaIngreso');
             $table->string('NivelAcademico');
+            $table->string('FechaEgreso')->nullable();
+            $table->string('Estatus')->nullable();
             $table->foreignId('id_cargo')
                   ->nullable()
-                  ->constrained('cargo')
+                  ->constrained('cargos')
                   ->cascadeOnUpdate()
                   ->nullOnDelete();
             $table->foreignId('id_gerencia')
                   ->nullable()
-                  ->constrained('gerencia')
+                  ->constrained('gerencias')
                   ->cascadeOnUpdate()
                   ->nullOnDelete();
             $table->foreignId('id_personas')

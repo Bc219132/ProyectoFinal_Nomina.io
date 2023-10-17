@@ -16,8 +16,13 @@ class RegistroController extends Controller
 
     public function create()
     {
-        $roles = Roles::all();
-        return view('Registro', compact('roles'));
+        if(auth()->check() && (auth()->user()->id_roles == '1' || auth()->user()->id_roles == '2')) {
+            $roles = Roles::all();
+            return view('Registro', compact('roles'));
+        }else{
+            $roles = null;
+        }
+        
     }
 
     public function store()

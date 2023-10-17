@@ -15,17 +15,17 @@ class BancoSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('banco')->insert([
+        DB::table('bancos')->insert([
             'id' => '0102',
             'NombreBanco' => 'Banco de Venezuela',
         ]);
 
-        DB::table('banco')->insert([
+        DB::table('bancos')->insert([
             'id' => '0105',
             'NombreBanco' => 'Mercantil',
         ]);
 
-        DB::table('banco')->insert([
+        DB::table('bancos')->insert([
             'id' => '0114',
             'NombreBanco' => 'Bancaribe',
         ]);

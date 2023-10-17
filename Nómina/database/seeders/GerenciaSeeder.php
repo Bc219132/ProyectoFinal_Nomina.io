@@ -15,9 +15,14 @@ class GerenciaSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('gerencia')->insert([
+        DB::table('gerencias')->insert([
             'id' => '1',
-            'TipoGerencia' => 'Talento Humano',
+            'TipoGerencia' => 'Gerencia Adminitrativa',
+        ]);
+
+        DB::table('gerencias')->insert([
+            'id' => '2',
+            'TipoGerencia' => 'Gerencia de Operaciones',
         ]);
     }
 }

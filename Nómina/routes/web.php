@@ -8,6 +8,10 @@ use App\Http\Controllers\ConsulController;
 use App\Http\Controllers\EjecController;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\LaboralesController;
+use App\Http\Controllers\BancoController;
+use App\Http\Controllers\CargoController;
+use App\Http\Controllers\GerenciaController;
+use App\Http\Controllers\GeneroController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +25,7 @@ use App\Http\Controllers\LaboralesController;
 */
 
 Route::get('/', function () {
-    return view('Registro');
+    return view('Login');
 })->middleware('auth');
 
 
@@ -66,11 +70,26 @@ Route::get('/Ejec', [EjecController::class, 'index'])
     ->middleware('auth.Ejec')
     ->name('Ejec.index');
 
-Route::resource('user', RegistroController::class);
+Route::resource('user', RegistroController::class)
+    ->middleware('auth.Conjun');
+/******VISTA CRUP ADMINISTRATIVO & EJECUTOR******/
 
-/******VISTA CRUPN ADMINISTRATIVO******/
+Route::resource('persona', PersonaController::class)
+    ->middleware('auth.Conjun');
 
-Route::resource('persona', PersonaController::class);
+Route::get('laborales', [LaboralesController::class, 'index'])
+    ->middleware('auth.Conjun');
+Route::resource('persona.laboral', LaboralesController::class)
+    ->shallow()
+    ->middleware('auth.Conjun');
 
-Route::get('laborales', [LaboralesController::class, 'index']);
-Route::resource('persona.laboral', LaboralesController::class)->shallow();
+/******VISTA CRUP GENERO||BANCO||GERENCIA||CARGO******/
+
+Route::resource('genero', GeneroController::class)
+->middleware('auth.Conjun');
+Route::resource('banco', BancoController::class)
+->middleware('auth.Conjun');
+Route::resource('gerencia', GerenciaController::class)
+->middleware('auth.Conjun');
+Route::resource('cargo', CargoController::class)
+->middleware('auth.Conjun');

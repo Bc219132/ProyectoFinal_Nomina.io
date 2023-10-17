@@ -58,6 +58,7 @@ class Kernel extends HttpKernel
         'auth.Admin' => \App\Http\Middleware\AdminAuth::class,
         'auth.Consul' => \App\Http\Middleware\ConsulAuth::class,
         'auth.Ejec' => \App\Http\Middleware\EjecAuth::class,
+        'auth.Conjun' => \App\Http\Middleware\ConjunAuth::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,

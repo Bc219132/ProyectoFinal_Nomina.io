@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('Cedula')->unique();
             $table->string('RIF')->unique();
             $table->string('FechaNacimiento');
-            $table->string('Nacionalidad');
+            $table->string('TipoDocumento');
             $table->foreignId('id_generos')
                   ->nullable()
                   ->constrained('generos')
