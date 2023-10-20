@@ -3,19 +3,12 @@
 @section('title', 'Registro')
 
 @section('Contenido')
-    <ul>
-        <i>
-            <h2>EDICIÓN DE REGISTRO</h2>
-        </i>
-
-        <br><br>
-
-        <form action="{{ url('/persona/' . $persona->id) }}" method="post" class="form-inline">
+    <div class="mx-auto">
+        <h2 class="text-center mb-4"><b><i>REGISTRO DE NUEVO EMPLEADO</i></b></h2>
+        <form action="{{ route('persona.update', ['persona' => $persona->id]) }}" method="post">
             @csrf
-            {{ method_field('PATCH') }}
-            <br><br><br>
+            @method('PATCH')
             @include('persona.form', ['modo' => 'Editar'])
-
         </form>
-    </ul>
+    </div>
 @endsection

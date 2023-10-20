@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PersonStoreRequest;
-use Illuminate\Http\Request;
+use App\Http\Requests\PersonUpdateRequest;
 use App\Models\Persona;
 use App\Models\Generos;
 
@@ -27,15 +27,15 @@ class PersonaController extends Controller
     {
         $validated = $request->validated();
         $data = [
-            'PrimerNombre' => $validated->firstName,
-            'SegundoNombre' => $validated->secondName,
-            'PrimerApellido' => $validated->lastName,
-            'SegundoApellido' => $validated->secondLastName,
-            'TipoDocumento' => $validated->identificationType,
-            'Cedula' => $validated->identification,
-            'id_genero' => $validated->genre,
-            'FechaNacimiento' => $validated->birthdate,
-            'RIF' => $validated->rif
+            'PrimerNombre' => $validated['firstName'],
+            'SegundoNombre' => $validated['secondName'],
+            'PrimerApellido' => $validated['lastName'],
+            'SegundoApellido' => $validated['secondLastName'],
+            'TipoDocumento' => $validated['identificationType'],
+            'Cedula' => $validated['identification'],
+            'id_genero' => $validated['genre'],
+            'FechaNacimiento' => $validated['birthdate'],
+            'RIF' => $validated['rif']
         ];
         $person = Persona::create($data);
         return redirect("persona/$person->id/laboral/create")->with('mensaje', 'Empleado Agregado exitosamente');
@@ -48,13 +48,21 @@ class PersonaController extends Controller
         return view('persona.edit', compact('persona'), compact('generos'))->with('mensaje', 'Empleado Editado exitosamente');;
     }
 
-    public function update(Request $request, $id)
+    public function update(PersonUpdateRequest $request, $id)
     {
-
-        $datosPersona = request()->except(['_token', '_method']);
-        Persona::where('id', '=', $id)->update($datosPersona);
-
-        $persona = Persona::findOrFail($id);
+        $validated = $request->validated();
+        $data = [
+            'PrimerNombre' => $validated['firstName'],
+            'SegundoNombre' => $validated['secondName'],
+            'PrimerApellido' => $validated['lastName'],
+            'SegundoApellido' => $validated['secondLastName'],
+            'TipoDocumento' => $validated['identificationType'],
+            'Cedula' => $validated['identification'],
+            'id_genero' => $validated['genre'],
+            'FechaNacimiento' => $validated['birthdate'],
+            'RIF' => $validated['rif']
+        ];
+        Persona::findOrFail($id)->update($data);
         return redirect('persona');
     }
 
