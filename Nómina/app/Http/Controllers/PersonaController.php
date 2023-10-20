@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PersonStoreRequest;
 use Illuminate\Http\Request;
 use App\Models\Persona;
 use App\Models\Generos;
@@ -22,18 +23,19 @@ class PersonaController extends Controller
 
 
 
-    public function store(Request $request)
+    public function store(PersonStoreRequest $request)
     {
+        $validated = $request->validated();
         $data = [
-            'PrimerNombre' => $request->firstName,
-            'SegundoNombre' => $request->secondName,
-            'PrimerApellido' => $request->lastName,
-            'SegundoApellido' => $request->secondLastName,
-            'TipoDocumento' => $request->identificationType,
-            'Cedula' => $request->identification,
-            'id_genero' => $request->genre,
-            'FechaNacimiento' => $request->birthdate,
-            'RIF' => $request->rif
+            'PrimerNombre' => $validated->firstName,
+            'SegundoNombre' => $validated->secondName,
+            'PrimerApellido' => $validated->lastName,
+            'SegundoApellido' => $validated->secondLastName,
+            'TipoDocumento' => $validated->identificationType,
+            'Cedula' => $validated->identification,
+            'id_genero' => $validated->genre,
+            'FechaNacimiento' => $validated->birthdate,
+            'RIF' => $validated->rif
         ];
         $person = Persona::create($data);
         return redirect("persona/$person->id/laboral/create")->with('mensaje', 'Empleado Agregado exitosamente');
