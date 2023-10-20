@@ -1,4 +1,4 @@
-@extends('Layouts.Admin')
+@extends('layouts.Admin')
 
 @section('title', 'Registro')
 
@@ -6,16 +6,16 @@
     <ul>
         <i>
             <h2>Proceso de Datos Laborales</h2>
-        </i>   
+        </i>
 
         <br><br>
 
-        <form action="{{ url('/laboral')}}" method="post">
+        <form action="{{ url('/laboral') }}" method="post">
             @csrf
             @include('persona.laboral.form');
-            
+
 
         </form>
-        
+
     </ul>
 @endsection

@@ -42,7 +42,6 @@ class DatabaseSeeder extends Seeder
         $user->password = ('1234/#*');
         $user->id_roles = '1';
 
-        $user-> save();
-
+        $user->save();
     }
 }

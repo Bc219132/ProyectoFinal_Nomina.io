@@ -24,9 +24,18 @@ class PersonaController extends Controller
 
     public function store(Request $request)
     {
-        //$datosPersona = request()->all();
-        $datosPersona = request()->except('_token');
-        $person = Persona::create($datosPersona);
+        $data = [
+            'PrimerNombre' => $request->firstName,
+            'SegundoNombre' => $request->secondName,
+            'PrimerApellido' => $request->lastName,
+            'SegundoApellido' => $request->secondLastName,
+            'TipoDocumento' => $request->identificationType,
+            'Cedula' => $request->identification,
+            'id_genero' => $request->genre,
+            'FechaNacimiento' => $request->birthdate,
+            'RIF' => $request->rif
+        ];
+        $person = Persona::create($data);
         return redirect("persona/$person->id/laboral/create")->with('mensaje', 'Empleado Agregado exitosamente');
     }
 

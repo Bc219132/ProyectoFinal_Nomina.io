@@ -1,4 +1,4 @@
-@extends('Layouts.Panel')
+@extends('layouts.Panel')
 
 @section('title', 'Registro')
 
@@ -6,56 +6,59 @@
 
     <form class="mt-4" method="POST" action="">
         @csrf
-        
-          <p class="text-center fw-bold mx-3 mb-0">Registrar un Usuario</p>
+
+        <p class="text-center fw-bold mx-3 mb-0">Registrar un Usuario</p>
 
 
-            <!-- Usuario -->
+        <!-- Usuario -->
 
-            <input type="text" name="Nombre_Usuario" id="Nombre_Usuario" class="form-control form-control-lg"
-                placeholder="Usuario"/>
-            <label class="form-label" for="form3Example3">Usuario Registrado</label>
+        <input type="text" name="Nombre_Usuario" id="Nombre_Usuario" class="form-control form-control-lg"
+            placeholder="Usuario" />
+        <label class="form-label" for="form3Example3">Usuario Registrado</label>
 
-            @error('Nombre_Usuario')
-              <p class="border border-red-500 rounded-md bg-red-100 w-full 
-              text-red-600 p-2 my-2">* {{ $message }} *</p>
-            @enderror
+        @error('Nombre_Usuario')
+            <p class="border border-red-500 rounded-md bg-red-100 w-full
+              text-red-600 p-2 my-2">*
+                {{ $message }} *</p>
+        @enderror
 
-            <!-- Contraseña -->
+        <!-- Contraseña -->
 
-            <input type="password" name="password" id="password" class="form-control form-control-lg"
-                placeholder="Contraseña"/>
-            <label class="form-label" for="form3Example4">Contraseña</label>
+        <input type="password" name="password" id="password" class="form-control form-control-lg"
+            placeholder="Contraseña" />
+        <label class="form-label" for="form3Example4">Contraseña</label>
 
-            @error('password')
-              <p class="border border-red-500 rounded-md bg-red-100 w-full 
-              text-red-600 p-2 my-2">* {{ $message }} </p>
-            @enderror
+        @error('password')
+            <p class="border border-red-500 rounded-md bg-red-100 w-full
+              text-red-600 p-2 my-2">*
+                {{ $message }} </p>
+        @enderror
 
-            <!-- Confir Contraseña -->
+        <!-- Confir Contraseña -->
 
-            <input type="password" name="password_Confirmation" id="password_Confirmation" class="form-control form-control-lg"
-            placeholder="Confirmar Contraseña"/>
-            <label class="form-label" for="form3Example4">Confirmar Contraseña</label>
+        <input type="password" name="password_Confirmation" id="password_Confirmation" class="form-control form-control-lg"
+            placeholder="Confirmar Contraseña" />
+        <label class="form-label" for="form3Example4">Confirmar Contraseña</label>
 
-            <!-- Rol -->
+        <!-- Rol -->
 
-            <select name="id_roles" class="form-control" id="id_roles">
-               @foreach ($roles as $rol)
-                <option value="{{$rol['id'] }}">{{ $rol['Tipo_Rol']}}</option>
-               @endforeach
-            </select>
-            <label class="form-label" for="form3Example4">Rol a Asiganar</label>
-            
-            @error('Roles')
-              <p class="border border-red-500 rounded-md bg-red-100 w-full 
-              text-red-600 p-2 my-2">* {{ $message }} </p>
-            @enderror
+        <select name="id_roles" class="form-control" id="id_roles">
+            @foreach ($roles as $rol)
+                <option value="{{ $rol['id'] }}">{{ $rol['Tipo_Rol'] }}</option>
+            @endforeach
+        </select>
+        <label class="form-label" for="form3Example4">Rol a Asiganar</label>
 
-          <button type="submit" class="btn btn-primary btn-lg"
+        @error('Roles')
+            <p class="border border-red-500 rounded-md bg-red-100 w-full
+              text-red-600 p-2 my-2">*
+                {{ $message }} </p>
+        @enderror
+
+        <button type="submit" class="btn btn-primary btn-lg"
             style="padding-left: 2.5rem; padding-right: 2.5rem;">Registrar</button>
 
-      </form>
+    </form>
 
 
 @endsection

@@ -25,7 +25,7 @@ use App\Http\Controllers\GeneroController;
 */
 
 Route::get('/', function () {
-    return view('Login');
+    return view('login');
 })->middleware('auth');
 
 
@@ -40,17 +40,17 @@ Route::post('/Registro', [RegistroController::class, 'store'])
 
 /*INICIO DE SESION*/
 
-Route::get('/Login', [SesionController::class, 'create'])
+Route::get('/login', [SesionController::class, 'create'])
     ->middleware('guest')
-    ->name('Login.index');
-Route::post('/Login', [SesionController::class, 'store'])
-    ->name('Login.Store');
+    ->name('login.index');
+Route::post('/login', [SesionController::class, 'store'])
+    ->name('login.store');
 
 /*CERRAR SESION*/
 
-Route::get('/Logout', [SesionController::class, 'destroy'])
+Route::get('/logout', [SesionController::class, 'destroy'])
     ->middleware('auth')
-    ->name('Login.destroy');
+    ->name('login.destroy');
 
 /*INICIO DE SESION ADMINITRADOR*/
 
@@ -86,10 +86,10 @@ Route::resource('persona.laboral', LaboralesController::class)
 /******VISTA CRUP GENERO||BANCO||GERENCIA||CARGO******/
 
 Route::resource('genero', GeneroController::class)
-->middleware('auth.Conjun');
+    ->middleware('auth.Conjun');
 Route::resource('banco', BancoController::class)
-->middleware('auth.Conjun');
+    ->middleware('auth.Conjun');
 Route::resource('gerencia', GerenciaController::class)
-->middleware('auth.Conjun');
+    ->middleware('auth.Conjun');
 Route::resource('cargo', CargoController::class)
-->middleware('auth.Conjun');
+    ->middleware('auth.Conjun');

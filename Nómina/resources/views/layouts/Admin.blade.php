@@ -117,7 +117,7 @@
                     <span>Lock Account</span>
                     <i class="mdi mdi-lock ml-1"></i>
                   </a>
-                  <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="{{ route('Login.destroy') }}">
+                  <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="{{ route('login.destroy') }}">
                     <span>Cerrar Sesión</span>
                     <i class="mdi mdi-logout ml-1"></i>
                   </a>
@@ -323,7 +323,7 @@
             </li>
             <li class="nav-item sidebar-user-actions">
               <div class="sidebar-user-menu">
-                <a href="{{ route('Login.destroy') }}" class="nav-link"><i class="mdi mdi-logout menu-icon"></i>
+                <a href="{{ route('login.destroy') }}" class="nav-link"><i class="mdi mdi-logout menu-icon"></i>
                   <span class="menu-title">Cerrar Sesión</span></a>
               </div>
             </li>
@@ -350,7 +350,7 @@
             <div class="footer-inner-wraper">
               <div class="d-sm-flex justify-content-center justify-content-sm-between">
                 <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-                <!--<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from Bootstrapdash.com</span> --> 
+                <!--<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from Bootstrapdash.com</span> -->
                 </div>
             </div>
           </footer>

@@ -38,6 +38,6 @@ class RegistroController extends Controller
 
         $user = user::create(request(['Nombre_Usuario', 'password', 'id_roles']));
 
-        auth()->Login($user);
+        auth()->login($user);
     }
 }

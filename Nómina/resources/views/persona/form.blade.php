@@ -1,65 +1,56 @@
-<body>
-   <div class="container text-center">
-      <div class="form-group"> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
-         <label for="PrimerApellido" style="color: rgba(0, 0, 0, 0.836);"><b>Primer Nombre</b></label> &nbsp &nbsp &nbsp &nbsp 
-         <input type="text" class="form-control " name="PrimerNombre" value="{{ isset($persona->PrimerNombre)?$persona->PrimerNombre:'' }}" id="PrimerNombre" >
-         &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
-         <label for="PrimerApellido" style="color: rgba(0, 0, 0, 0.836);"><b>Segundo Nombre</b></label> &nbsp &nbsp &nbsp
-         <input type="text" class="form-control" name="SegundoNombre" id="SegundoNombre" value="{{ isset($persona->SegundoNombre)?$persona->SegundoNombre:'' }}">
-      </div>
-         <br><br>
-
-      <div class="form-group"> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  
-         <label for="PrimerApellido" style="color: rgba(0, 0, 0, 0.836);"><b>Primer Apellido</b></label> &nbsp &nbsp &nbsp &nbsp
-         <input type="text" class="form-control" name="PrimerApellido" id="PrimerApellido" value="{{ isset($persona->PrimerApellido)?$persona->PrimerApellido:'' }}">
-         &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
-         <label for="SegundoApellido" style="color: rgba(0, 0, 0, 0.836);"><b>Segundo Apellido</b></label> &nbsp &nbsp &nbsp 
-         <input type="text" class="form-control" name="SegundoApellido" id="SegundoApellido" value="{{ isset($persona->SegundoApellido)?$persona->SegundoApellido:'' }}">
-      </div>
-      <br><br>
-
-      <div class="form-group"> &nbsp &nbsp &nbsp &nbsp &nbsp 
-            <label for="Cedula" style="color: rgba(0, 0, 0, 0.836);"><b> Cédula de Identidad </b></label> &nbsp 
-            <select class="form-control" name="TipoDocumento" id="TipoDocumento" value="{{ isset($persona->TipoDocumento)?$persona->TipoDocumento:'' }}">
-               <option value="V">V</option>
-               <option value="E">E</option>
-               <option value="P">P</option>
+<div class="row justify-content-center p-3" style="max-width: 600px">
+    <div class="col-12 col-sm-6">
+        <label for="firstName" class="form-label text-black">Primer nombre</label>
+        <input type="text" class="form-control" aria-label="Primer nombre" id="firstName" name="firstName" required
+            pattern="[a-zA-Z]+">
+    </div>
+    <div class="col-12 col-sm-6">
+        <label for="secondName" class="form-label text-black">Segundo nombre</label>
+        <input type="text" class="form-control" aria-label="Segundo nombre" id="secondName" name="secondName"
+            required pattern="[a-zA-Z]+">
+    </div>
+    <div class="col-12 col-sm-6">
+        <label for="lastName" class="form-label text-black">Primer apellido</label>
+        <input type="text" class="form-control" aria-label="Primer apellido" id="lastName" name="lastName" required
+            pattern="[a-zA-Z]+">
+    </div>
+    <div class="col-12 col-sm-6">
+        <label for="secondLastName" class="form-label text-black">Segundo apellido</label>
+        <input type="text" class="form-control" aria-label="Segundo apellido" id="secondLastName"
+            name="secondLastName" required pattern="[a-zA-Z]+">
+    </div>
+    <div class="col-12 col-sm-6">
+        <label for="identification" class="form-label text-black">Cédula de Identidad</label>
+        <div class="d-flex">
+            <select class="form-control" id="identificationType" name="identificationType" style="width: 3rem" required>
+                <option selected value="V">V</option>
+                <option value="E">E</option>
+                <option value="P">P</option>
             </select>
-            <input type="text" class="form-control" name="Cedula" id="Cedula" value="{{ isset($persona->Cedula)?$persona->Cedula:'' }}">
-            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-            <label for="id_generos" style="color: rgba(0, 0, 0, 0.836);"><b> Genero </b></label> &nbsp 
-            <select name="id_generos" class="form-control" id="id_generos" value="{{ isset($persona->id_generos)?$persona->id_generos:'' }}">
-               @foreach ($generos as $genero)
-                <option value="{{$genero['id'] }}">{{ $genero['Tipo_Genero']}}</option>
-               @endforeach
-            </select>
-      </div>    
-      <br><br>
+            <input type="text" class="form-control" id="identification" name="identification" required
+                pattern="\d{7,}">
+        </div>
+    </div>
+    <div class="col-12 col-sm-6">
+        <label for="genre" class="form-label text-black">Genero</label>
+        <select class="form-control" id="genre" name="genre" required>
+            @foreach ($generos as $genero)
+                <option @selected($loop->index == 0) value="{{ $genero['id'] }}">{{ $genero['Tipo_Genero'] }}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="col-12 col-sm-6">
+        <label for="birthdate" class="form-label text-black">Fecha de nacimiento</label>
+        <input type="date" max="{{ now()->format('Y-m-d') }}" class="form-control" aria-label="Primer apellido"
+            id="birthdate" name="birthdate" required>
+    </div>
+    <div class="col-12 col-sm-6">
+        <label for="rif" class="form-label text-black">Registro de Información Fiscal</label>
+        <input type="text" class="form-control" aria-label="RIF" id="rif" name="rif" required
+            pattern="\d{7,}">
+    </div>
 
-      <div class="form-group">&nbsp &nbsp &nbsp &nbsp &nbsp 
-            <label for="FechaNacimiento" style="color: rgba(0, 0, 0, 0.836);"> <b>Fecha de Nacimiento </b></label> &nbsp 
-            <input type="date" class="form-control" name="FechaNacimiento" id="FechaNacimiento" value="{{ isset($persona->FechaNacimiento)?$persona->FechaNacimiento:'' }}">
-            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-            <p style="color: rgba(0, 0, 0, 0.836);">&nbsp &nbsp  <b>Registro de </b><br>
-               <b>Información Fiscal</b></p> &nbsp &nbsp &nbsp
-             <input type="text" class="form-control" name="RIF" id="RIF" value="{{ isset($persona->RIF)?$persona->RIF:'' }}">
-      </div> 
-      <br><br>
-      <div class="d-grid gap-2 col-30 mx-80"> 
-         <br>
-         <div>
-               <button type="submit" class="btn btn-primary btn-lg"  
-                  >{{$modo }} </button>
-         </div>
-      </div>
-   </div>  
-   
-      
-      <script>
-         document.getElementById('botonGuardar').addEventListener('click', function() {
-             alert('Guardado exitosamente');
-         });
-     </script>
-
-</body>
-        
+    <div class="col-12">
+        <button type="submit" class="d-block btn btn-primary w-100 mt-3 mr-auto">{{ $modo }} </button>
+    </div>
+</div>

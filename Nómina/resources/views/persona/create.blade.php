@@ -1,20 +1,14 @@
-@extends('Layouts.Admin')
+@extends('layouts.Admin')
 
 @section('title', 'Registro')
 
 @section('Contenido')
-    <ul>
-        <i>
-            <h2 class="text-center"><b>REGISTRO DE NUEVO EMPLEADO</b></h2>
-        </i>   
+    <div class="mx-auto">
+        <h2 class="text-center mb-4"><b><i>REGISTRO DE NUEVO EMPLEADO</i></b></h2>
 
-        <br><br>
-
-        <form action="{{ url('/persona')}}" method="post" class="form-inline "  >
+        <form action="{{ route('persona.store') }}" method="post">
             @csrf
-            <br><br><br>
-            @include('persona.form',['modo'=>'Agregar'])
-        
+            @include('persona.form', ['modo' => 'Agregar'])
         </form>
-    </ul>
+    </div>
 @endsection
