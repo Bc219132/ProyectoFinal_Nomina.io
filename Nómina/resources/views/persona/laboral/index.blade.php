@@ -27,37 +27,42 @@
         </thead>
         <tbody>
             @foreach ($personas as $persona)
-                @if (empty($persona->datosLaborales->detallesCargos->gerencia))
-                    <tr>
-                        <td>{{ $persona->PrimerNombre }}
-                            {{ $persona->PrimerApellido }}
-                        </td>
-                        <td>{{ $persona->Cedula }}</td>
+                <tr>
+                    <td>{{ $persona->PrimerNombre }}
+                        {{ $persona->PrimerApellido }}
+                    </td>
+                    <td>{{ $persona->Cedula }}</td>
+                    <td>
+                        @if (
+                            !empty($persona->datosLaborales) &&
+                                !empty($persona->datosLaborales->detallesCargos) &&
+                                !empty($persona->datosLaborales->detallesCargos->gerencia))
+                            {{ $persona->datosLaborales->detallesCargos->gerencia->TipoGerencia }}
+                        @endif
+                    </td>
+                    <td>
+                        @if (!empty($persona->datosLaborales) && !empty($persona->datosLaborales->detallesCargos))
+                            {{ $persona->datosLaborales->detallesCargos->TipoCargo }}
+                        @endif
+                    </td>
+                    @if (!$persona->datosLaborales)
                         <td>
-                            @if (!empty($persona->datosLaborales) && !empty($persona->datosLaborales->detallesCargos))
-                                {{ $persona->datosLaborales->detallesCargos->TipoCargo }}
-                            @endif
-                        </td>
-                        <td>
-                            @if (!empty($persona->datosLaborales) && !empty($persona->datosLaborales->detallesCargos))
-                                {{ $persona->datosLaborales->detallesCargos->TipoCargo }}
-                            @endif
-                        </td>
-                        <td>
-                            <a href="{{ url('#') }}" class="btn btn-warning">
+                            <a href="{{ route('persona.laboral.create', ['persona' => $persona->id]) }}"
+                                class="btn btn-warning">
                                 Agregar Datos Laborales
                             </a>
                         </td>
-                    </tr>
-                @endif
+                    @else
+                        <td>
+                            <a href="{{ route('laboral.edit', ['laboral' => $persona->datosLaborales->id]) }}"
+                                class="btn btn-warning">
+                                Actualizar Datos Laborales
+                            </a>
+                        </td>
+                    @endif
+                </tr>
             @endforeach
         </tbody>
 
     </table>
-
-    <script>
-        window.addEventListener('popstate', function(event) {
-            window.history.pushState(null, document.title, window.location.href);
-        });
-    </script>
 @endsection
