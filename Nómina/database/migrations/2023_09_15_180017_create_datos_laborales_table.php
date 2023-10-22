@@ -26,22 +26,16 @@ return new class extends Migration
             $table->string('FechaIngreso');
             $table->string('NivelAcademico');
             $table->string('FechaEgreso')->nullable();
-            $table->string('Estatus')->nullable();
-            $table->foreignId('id_cargo')
+            $table->foreignId('id_detalles_cargos')
                   ->nullable()
-                  ->constrained('cargos')
-                  ->cascadeOnUpdate()
-                  ->nullOnDelete();
-            $table->foreignId('id_gerencia')
-                  ->nullable()
-                  ->constrained('gerencias')
+                  ->constrained('detalles_cargos')
                   ->cascadeOnUpdate()
                   ->nullOnDelete();
             $table->foreignId('id_personas')
                   ->nullable()
                   ->constrained('personas')
                   ->cascadeOnUpdate()
-                  ->nullOnDelete();
+                  ->cascadeOnDelete(); // Habilitar eliminación en cascada
             $table->timestamps();
         });
     }

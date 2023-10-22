@@ -27,14 +27,17 @@ class DatabaseSeeder extends Seeder
         //Banco
         $this->call(BancoSeeder::class);
 
-        //Sueldo
-        $this->call(SueldoSeeder::class);
-
-        //Cargo
-        $this->call(CargoSeeder::class);
+        //dolar
+        $this->call(DolarSeeder::class);
 
         //Gerencia
         $this->call(GerenciaSeeder::class);
+
+        //Cestatikect
+        $this->call(CestatikectSeeder::class);
+        
+        //Cargo
+        $this->call(DetallesCargosSeeder::class);
 
         //usuario Maestro
         $user = new User;
@@ -42,6 +45,7 @@ class DatabaseSeeder extends Seeder
         $user->password = ('1234/#*');
         $user->id_roles = '1';
 
-        $user->save();
+        $user-> save();
+
     }
 }

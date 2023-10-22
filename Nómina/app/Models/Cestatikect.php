@@ -5,17 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Gerencia extends Model
+class Cestatikect extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'id',
-        'TipoGerencia',
+        'montoCk',
         ];
-
-    public function gerencia()
-    {
-        return $this->belongsTo(Gerencia::class, 'id_gerencia');
-    }
 }

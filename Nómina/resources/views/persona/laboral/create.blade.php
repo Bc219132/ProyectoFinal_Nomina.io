@@ -1,14 +1,16 @@
-@extends('layouts.Admin')
+@extends('Layouts.Admin')
 
 @section('title', 'Registro')
 
 @section('Contenido')
     <ul>
         <i>
-            <h2>Proceso de Datos Laborales</h2>
+        <h2 class="text-center"><b>PROCESO DE DATOS LABORALES</b></h2>
         </i>
-        <form action="{{ url("/persona/$id/laboral") }}" method="post">
+        <br><br>
+        <form action="{{ url("/persona/$id/laboral")}}" method="post" class="form-inline ">
             @csrf
+            
             @include('persona.laboral.form');
 
 

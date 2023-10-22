@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class GerenciaSeeder extends Seeder
+class DolarSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,14 +15,9 @@ class GerenciaSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('gerencias')->insert([
+        DB::table('dolar')->insert([
             'id' => '1',
-            'TipoGerencia' => 'Adminitrativa',
-        ]);
-
-        DB::table('gerencias')->insert([
-            'id' => '2',
-            'TipoGerencia' => 'Operaciones',
+            'TasaActual' => '40,24',
         ]);
     }
 }

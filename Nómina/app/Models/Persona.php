@@ -28,4 +28,9 @@ class Persona extends Model
     {
         return $this->hasOne(DatosLaborales::class, 'id_personas');
     }
+
+    public function datosLaborales()
+    {
+        return $this->hasOne(DatosLaborales::class, 'id_personas');
+    }
 }

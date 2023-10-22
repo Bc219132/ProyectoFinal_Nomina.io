@@ -6,13 +6,16 @@ use App\Http\Requests\PersonStoreRequest;
 use App\Http\Requests\PersonUpdateRequest;
 use App\Models\Persona;
 use App\Models\Generos;
+use App\Models\DatosLaborales;
+use App\Models\DetallesCargos;
 
 class PersonaController extends Controller
 {
     public function index()
     {
         $datos['personas'] = Persona::paginate(15);
-        return view('persona.index', $datos);
+        $personas = Persona::with('datosLaborales')->get();
+        return view('persona.index', $datos, compact('personas'));
     }
 
     public function create()
@@ -45,7 +48,7 @@ class PersonaController extends Controller
     {
         $generos = Generos::all();
         $persona = Persona::findOrFail($id);
-        return view('persona.edit', compact('persona'), compact('generos'))->with('mensaje', 'Empleado Editado exitosamente');;
+        return view('persona.edit', compact('persona','generos'))->with('mensaje', 'Empleado Editado exitosamente');;
     }
 
     public function update(PersonUpdateRequest $request, $id)

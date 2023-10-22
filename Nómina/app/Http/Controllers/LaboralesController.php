@@ -9,23 +9,26 @@ use App\Models\DatosLaborales;
 use App\Models\Gerencia;
 use App\Models\Banco;
 use App\Models\Cargo;
+use App\Models\DetallesCargos;
 
 class LaboralesController extends Controller
 {
     public function index()
     {
         //
+        $personas = Persona::all();
         $datos['laborales'] = DatosLaborales::paginate(15);
-        return view('persona.laboral.index', $datos);
+        return view('persona.laboral.index', $datos, compact('personas'));
     }
 
     public function create($id)
     {
         //
-        return view('persona.laboral.create', ['id' => $id]);
+        $cargos = DetallesCargos::all();
+        $gerencias = Gerencia::all();
+        $bancos = Banco::all();
+        return view('persona.laboral.create',['id' => $id], compact('cargos', 'gerencias', 'bancos'));
     }
-
-
 
     public function store(Request $request, $id)
     {

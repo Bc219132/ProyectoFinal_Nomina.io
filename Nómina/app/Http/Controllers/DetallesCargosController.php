@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DetallesCargos;
 use App\Models\Sueldo;
+use App\Models\Gerencia;
+use App\Models\Generos;
 
-class CargoController extends Controller
+class DetallesCargosController extends Controller
 {
     public function index(){
-        $datos['cargos'] = DetallesCargos::paginate(15);
+        $datos['cargos'] = Detallescargos::paginate(15);
         return view('persona.cargo.index', $datos);
     }
 
@@ -24,7 +26,8 @@ class CargoController extends Controller
     {
         //
         $datosCargo = request()->except('_token');
-        DetallesCargos::insert($datosCargo);
+        Detallescargos::insert($datosCargo);
+        $generos = Generos::all();
         return redirect('cargo')->with('mensaje', 'Guardado exitosamente');
     }
 
@@ -41,7 +44,7 @@ class CargoController extends Controller
     public function destroy($id)
     {
         //
-        DetallesCargos::destroy($id);
+        Detallescargos::destroy($id);
         return redirect('cargo');
     }
 }

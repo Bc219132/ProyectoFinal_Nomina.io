@@ -18,9 +18,7 @@ class DatosLaborales extends Model
         'FechaIngreso',
         'NivelAcademico',
         'FechaEgreso',
-        'Estatus',
-        'id_cargo',
-        'id_gerencia',
+        'id_detalles_cargos',
         'id_personas',
     ];
 
@@ -28,4 +26,10 @@ class DatosLaborales extends Model
     {
         return $this->belongsTo(Persona::class, 'id_personas');
     }
+
+    public function detallesCargos()
+    {
+        return $this->belongsTo(DetallesCargos::class, 'id_detalles_cargos');
+    }
+
 }

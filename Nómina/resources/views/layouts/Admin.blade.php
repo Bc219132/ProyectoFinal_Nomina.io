@@ -245,10 +245,21 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pages/forms/basic_elements.html">
-                <span class="icon-bg"><i class="mdi mdi-format-list-bulleted menu-icon"></i></span>
-                <span class="menu-title">Forms</span>
+              <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
+                <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+                <span class="menu-title">PreNómina</span>
+                <i class="menu-arrow"></i>
               </a>
+              <div class="collapse" id="ui-basic2">
+                <ul class="nav flex-column sub-menu">
+                  <b>Transacciones Cotidianas</b>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> Sueldo</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> CestaTikect </a></li>
+                  <b>Transacciones Eventuales</b>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> #</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> # </a></li>
+                </ul>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="pages/charts/chartjs.html">
@@ -276,17 +287,17 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">
+              <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic2">
                 <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
                 <span class="menu-title">Página Configuraciones</span>
                 <i class="menu-arrow"></i>
               </a>
-              <div class="collapse" id="ui-basic2">
+              <div class="collapse" id="ui-basic3">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="{{url('genero')}}"> Agregar Nuevo Género </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{url('banco')}}"> Agregar Nuevo Banco </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{url('gerencia')}}"> Agregar Nueva Gerencia </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{url('cargo')}}"> Agregar Nuevo Cargo </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('genero')}}"> Nuevo Género </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('banco')}}"> Nuevo Banco </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('gerencia')}}"> Nueva Gerencia </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('cargo')}}"> Descripción de Cargo </a></li>
                 </ul>
               </div>
             </li>
@@ -350,7 +361,7 @@
             <div class="footer-inner-wraper">
               <div class="d-sm-flex justify-content-center justify-content-sm-between">
                 <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-                <!--<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from Bootstrapdash.com</span> -->
+                <!--<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from Bootstrapdash.com</span> --> 
                 </div>
             </div>
           </footer>

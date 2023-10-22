@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class CargoSeeder extends Seeder
+class CestatikectSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,10 +15,9 @@ class CargoSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cargos')->insert([
+        DB::table('cestatikect')->insert([
             'id' => '1',
-            'TipoCargo' => 'Analista 1',
-            'id_sueldo' => '1',
+            'montoCk' => '30',
         ]);
     }
 }

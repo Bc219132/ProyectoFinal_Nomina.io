@@ -1,44 +1,63 @@
-@extends('layouts.Admin')
+@extends('Layouts.Admin')
 
 @section('title', 'Registro')
 
 @section('Contenido')
 
-    @if (Session::has('mensaje'))
+    @if(Session::has('mensaje'))
         {{ Session::get('mensaje') }}
     @endif
 
     <ul>
-        <i>
-            <h2>Listado de Empleados Activos</h2>
-    </ul>
+        <h2>Listado de Empleados </h2>
+    </ul>   
 
-    <br><br><br><br>
+    <br><br>
     <table class="table table-light">
 
         <thead class="thed-light">
             <tr>
-            <tr></tr>
-            <th>Nombre y Apellido</th>
-            <th>Cargo</th>
-            <th>Gerencia</th>
-            <th>Tipo de Contrato</th>
-            <th>Acción</th>
+                <tr></tr>
+                <th ><b></b>Nombre y Apellido</b></th>
+                <th><b>Cédula</b></th>
+                <th><b>Gerencia</b></th>
+                <th><b>Cargo</b></th>
+                <th><b>Opción</b></th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($laborales as $laboral)
-                <tr>
-                    <td>{{ $laboral->TipoContrato }}</td>
-                    <td>{{ $laboral->TipoContrato }}</td>
-                    <td>{{ $laboral->TipoContrato }}</td>
-                    <td>{{ $laboral->TipoContrato }}</td>
-                    <td>Incluir - Datos Laborales</td>
-                </tr>
+            @foreach ($personas as $persona)
+                @if (empty($persona->datosLaborales->detallesCargos->gerencia))
+                    <tr>
+                        <td>{{ $persona->PrimerNombre }}
+                            {{ $persona->PrimerApellido}}
+                        </td>
+                        <td>{{ $persona->Cedula }}</td>
+                        <td>
+                            @if (!empty($persona->datosLaborales) && !empty($persona->datosLaborales->detallesCargos))
+                                {{ $persona->datosLaborales->detallesCargos->TipoCargo }}
+                            @endif
+                        </td>
+                        <td>
+                            @if (!empty($persona->datosLaborales) && !empty($persona->datosLaborales->detallesCargos))
+                                {{ $persona->datosLaborales->detallesCargos->TipoCargo }}
+                            @endif
+                        </td>
+                        <td>
+                            <a href="{{ url('#') }}" class="btn btn-warning">
+                                Agregar Datos Laborales
+                            </a>
+                        </td>
+                    </tr>
+                @endif
             @endforeach
-        </tbody>
+        </tbody>    
 
-    </table>
+    </table>    
 
-
+    <script>
+        window.addEventListener('popstate', function (event) {
+            window.history.pushState(null, document.title, window.location.href);
+        });
+    </script>
 @endsection

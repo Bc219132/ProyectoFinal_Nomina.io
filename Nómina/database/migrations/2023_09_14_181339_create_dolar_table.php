@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cargos', function (Blueprint $table) {
+        Schema::create('dolar', function (Blueprint $table) {
             $table->id();
-            $table->string('TipoCargo');
-            $table->foreignId('id_sueldo')
-                  ->nullable()
-                  ->constrained('sueldos')
-                  ->cascadeOnUpdate()
-                  ->nullOnDelete();
-            $table->timestamps();
+            $table->string('TasaActual');
         });
     }
 
@@ -32,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cargo');
+        Schema::dropIfExists('dolar');
     }
 };
