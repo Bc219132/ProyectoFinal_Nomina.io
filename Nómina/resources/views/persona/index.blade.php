@@ -40,7 +40,10 @@
                     </td>
                     <td>{{ $persona->Cedula }}</td>
                     <td>
-                        @if (!empty($persona->datosLaborales) && !empty($persona->datosLaborales->detallesCargos) && !empty($persona->datosLaborales->detallesCargos->gerencia))
+                        @if (
+                            !empty($persona->datosLaborales) &&
+                                !empty($persona->datosLaborales->detallesCargos) &&
+                                !empty($persona->datosLaborales->detallesCargos->gerencia))
                             {{ $persona->datosLaborales->detallesCargos->gerencia->TipoGerencia }}
                         @endif
                     </td>
@@ -63,7 +66,8 @@
                         <form action="{{ url('/persona/' . $persona->id) }}" class="d-inline" method="post">
                             @csrf
                             {{ method_field('DELETE') }}
-                            <input type="submit" onclick="return confirm('¿Desea borrar registro?')" class="btn btn-danger" value="Borrar">
+                            <input type="submit" onclick="return confirm('¿Desea borrar registro?')" class="btn btn-danger"
+                                value="Borrar">
                         </form>
                     </td>
                 </tr>

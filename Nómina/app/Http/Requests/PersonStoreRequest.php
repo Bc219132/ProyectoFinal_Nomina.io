@@ -25,14 +25,14 @@ class PersonStoreRequest extends FormRequest
     {
         return [
             'firstName' => 'required|alpha',
-            'secondName' => 'required|alpha',
+            'secondName' => 'nullable|alpha',
             'lastName' => 'required|alpha',
-            'secondLastName' => 'required|alpha',
-            'identificationType' => 'required|alpha|min:1',
-            'identification' => 'required|numeric|min:7',
+            'secondLastName' => 'nullable|alpha',
+            'identificationType' => 'required|alpha',
+            'identification' => 'required|regex:/^\d*$/|between:7,8|unique:personas,Cedula',
             'genre' => 'required|numeric|min:1',
             'birthdate' => 'required|before:tomorrow',
-            'rif' => 'required|numeric|min:7',
+            'rif' => 'required|regex:/^\d*$/|between:7,8|unique:personas,RIF',
         ];
     }
 }

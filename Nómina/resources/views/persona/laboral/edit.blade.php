@@ -1,4 +1,4 @@
-@extends('Layouts.Admin')
+@extends('layouts.Admin')
 
 @section('title', 'Registro')
 
@@ -6,11 +6,11 @@
     <ul>
         <i>
             <h2>PROCESO DE DATOS LABORALES</h2>
-        </i>   
+        </i>
 
         <br><br>
 
-        <form action="{{ url('/laboral/'.$laboral->id)}}" method="post" class="form-inline">
+        <form action="{{ url('/laboral/' . $laboral->id) }}" method="post" class="form-inline">
             @csrf
             {{ method_field('PATCH') }}
             <br><br><br>
