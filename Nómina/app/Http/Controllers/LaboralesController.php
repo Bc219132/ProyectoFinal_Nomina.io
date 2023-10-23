@@ -16,9 +16,8 @@ class LaboralesController extends Controller
     public function index()
     {
         //
-        $personas = Persona::all();
-        $datos['laborales'] = DatosLaborales::paginate(15);
-        return view('persona.laboral.index', $datos, compact('personas'));
+        $personas = Persona::with('datosLaborales')->get();
+        return view('persona.laboral.index', compact('personas'));
     }
 
     public function create($id)
@@ -27,7 +26,7 @@ class LaboralesController extends Controller
         $cargos = DetallesCargos::all();
         $gerencias = Gerencia::all();
         $bancos = Banco::all();
-        return view('persona.laboral.create',['id' => $id], compact('cargos', 'gerencias', 'bancos'));
+        return view('persona.laboral.create', ['id' => $id], compact('cargos', 'gerencias', 'bancos'));
     }
 
     public function store(Request $request, $id)
@@ -35,14 +34,17 @@ class LaboralesController extends Controller
         //
         $persona = Persona::findOrFail($id);
         $datoslaboral = request()->except('_token');
-        $persona->laborData()->create($datoslaboral);
+        $persona->datosLaborales()->create($datoslaboral);
         return redirect('persona');
     }
 
     public function edit($id)
     {
-        //
-        return view('persona.laboral.edit');
+        $bancos = Banco::all();
+        $cargos = DetallesCargos::all();
+        $gerencias = Gerencia::all();
+        $laboral = DatosLaborales::findOrFail($id);
+        return view('persona.laboral.edit', compact('cargos', 'gerencias', 'bancos', 'laboral'));
     }
 
     public function update(Request $request, $id)

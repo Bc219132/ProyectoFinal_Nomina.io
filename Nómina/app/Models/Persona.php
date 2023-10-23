@@ -24,11 +24,6 @@ class Persona extends Model
         'id_generos',
     ];
 
-    public function laborData()
-    {
-        return $this->hasOne(DatosLaborales::class, 'id_personas');
-    }
-
     public function datosLaborales()
     {
         return $this->hasOne(DatosLaborales::class, 'id_personas');
