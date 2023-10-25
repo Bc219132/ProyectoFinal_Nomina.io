@@ -75,7 +75,7 @@
     <div class="col-12 col-sm-6">
         <label for="rif" class="form-label text-black mt-3">Registro de Información Fiscal</label>
         <input type="text" class="form-control" aria-label="RIF" id="rif" name="rif" required
-            pattern="\d{7,8}" @isset($persona) value="{{ $persona->RIF }}" @endisset>
+            pattern="\d{9,10}" @isset($persona) value="{{ $persona->RIF }}" @endisset>
         @error('rif')
             <div class="d-block invalid-feedback">{{ $message }}</div>
         @enderror

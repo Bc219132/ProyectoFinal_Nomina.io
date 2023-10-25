@@ -22,11 +22,6 @@ return new class extends Migration
                   ->constrained('gerencias')
                   ->cascadeOnUpdate()
                   ->nullOnDelete();
-            $table->foreignId('id_dolar')
-                  ->nullable()
-                  ->constrained('dolar')
-                  ->cascadeOnUpdate()
-                  ->nullOnDelete();
             $table->foreignId('id_cestatikect')
                   ->nullable()
                   ->constrained('cestatikect')

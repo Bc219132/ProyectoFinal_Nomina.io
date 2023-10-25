@@ -15,9 +15,10 @@ class DolarSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('dolar')->insert([
+        DB::table('dolars')->insert([
             'id' => '1',
             'TasaActual' => '40,24',
+            'FechaActual' => '01/10/2023',
         ]);
     }
 }

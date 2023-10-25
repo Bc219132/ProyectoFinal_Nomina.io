@@ -29,7 +29,7 @@
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('assets/images/logo.svg')}}" alt="logo" /></a>
+          <a class="navbar-brand brand-logo" href="#" style="color: #FFFFFF;">Altus system</a>
           <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('assets/images/logo-mini.svg')}}" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -227,69 +227,8 @@
             <li class="nav-item">
               <a class="nav-link" href="index.html">
                 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-                <span class="menu-title">Dashboard</span>
+                <span class="menu-title">Solicitudes</span>
               </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
-                <span class="menu-title">Página Empleados</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="{{url('persona')}}"> Listado y Registro </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> Movimientos Internos </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{url('laborales')}}"> Proceso Datos Laborales </a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pages/forms/basic_elements.html">
-                <span class="icon-bg"><i class="mdi mdi-format-list-bulleted menu-icon"></i></span>
-                <span class="menu-title">Forms</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pages/charts/chartjs.html">
-                <span class="icon-bg"><i class="mdi mdi-chart-bar menu-icon"></i></span>
-                <span class="menu-title">Charts</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pages/tables/basic-table.html">
-                <span class="icon-bg"><i class="mdi mdi-table-large menu-icon"></i></span>
-                <span class="menu-title">Tables</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
-                <span class="menu-title">Página de Usuarios</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="auth">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="{{url('/user')}}"> Listado </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{url('/Registro')}}"> Registrar </a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">
-                <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
-                <span class="menu-title">Página Configuraciones</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="ui-basic2">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> Agregar Nuevo Género </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> Agregar Nuevo Banco </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> Agregar Nueva Gerencia </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> Agregar Nuevo Cargo </a></li>
-                </ul>
-              </div>
-            </li>
             <li class="nav-item documentation-link">
               <a class="nav-link" href="https://altussolutions.net/" target="_blank">
                 <span class="icon-bg">
@@ -350,7 +289,7 @@
             <div class="footer-inner-wraper">
               <div class="d-sm-flex justify-content-center justify-content-sm-between">
                 <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-                <!--<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from Bootstrapdash.com</span> -->
+                <!--<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from Bootstrapdash.com</span> --> 
                 </div>
             </div>
           </footer>
@@ -376,11 +315,11 @@
     <!-- Custom js for this page -->
     <script src="{{ asset('assets/js/dashboard.js')}}"></script>
     <!-- End custom js for this page -->
-
+    
     <script>
       if (window.performance && window.performance.navigation.type === 2) {
           // Detecta si la página se carga desde la caché al presionar el botón de retroceso
-          window.location.href = '/Login'; // página de inicio de sesión
+          window.location.href = '/'; // página de inicio de sesión
       }
     </script>
   </body>

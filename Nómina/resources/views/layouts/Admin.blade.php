@@ -29,7 +29,7 @@
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('assets/images/logo.svg')}}" alt="logo" /></a>
+          <a class="navbar-brand brand-logo" href="#" style="color: #FFFFFF;">Altus system</a>
           <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('assets/images/logo-mini.svg')}}" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -239,7 +239,6 @@
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{url('persona')}}"> Listado y Registro </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> Movimientos Internos </a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{url('laborales')}}"> Proceso Datos Laborales </a></li>
                 </ul>
               </div>
@@ -253,7 +252,7 @@
               <div class="collapse" id="ui-basic2">
                 <ul class="nav flex-column sub-menu">
                   <b>Transacciones Cotidianas</b>
-                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> Sueldo</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('calculo')}}"> Salario</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> CestaTikect </a></li>
                   <b>Transacciones Eventuales</b>
                   <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> #</a></li>
@@ -261,18 +260,20 @@
                 </ul>
               </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pages/charts/chartjs.html">
-                <span class="icon-bg"><i class="mdi mdi-chart-bar menu-icon"></i></span>
-                <span class="menu-title">Charts</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pages/tables/basic-table.html">
-                <span class="icon-bg"><i class="mdi mdi-table-large menu-icon"></i></span>
-                <span class="menu-title">Tables</span>
-              </a>
-            </li>
+            @if(auth()->check())
+                @php
+                    $userRole = auth()->user()->id_roles;
+                @endphp
+
+                <li class="nav-item">
+                    @if($userRole !== '3')
+                        <a class="nav-link" href="pages/charts/chartjs.html">
+                            <span class="icon-bg"><i class="mdi mdi-chart-bar menu-icon"></i></span>
+                            <span class="menu-title">Generar Nómina</span>
+                        </a>
+                    @endif
+                </li>
+            @endif
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                 <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
@@ -298,6 +299,7 @@
                   <li class="nav-item"> <a class="nav-link" href="{{url('banco')}}"> Nuevo Banco </a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{url('gerencia')}}"> Nueva Gerencia </a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{url('cargo')}}"> Descripción de Cargo </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('dolar')}}"> Información del Dolar</a></li>
                 </ul>
               </div>
             </li>

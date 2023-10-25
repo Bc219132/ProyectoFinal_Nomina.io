@@ -30,7 +30,7 @@ $(function() {
     }]
   };
   var multiLineData = {
-    labels: ["Red", "Blue", "Yellow", "Green", "Connect Plus", "Orange"],
+    labels: ["Red", "Blue", "Yellow", "Green", "Altus Nomina", "Orange"],
     datasets: [{
         label: 'Dataset 1',
         data: [12, 19, 3, 5, 2, 3],

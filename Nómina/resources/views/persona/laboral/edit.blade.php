@@ -3,19 +3,12 @@
 @section('title', 'Registro')
 
 @section('Contenido')
-    <ul>
-        <i>
-            <h2>PROCESO DE DATOS LABORALES</h2>
-        </i>
-
-        <br><br>
-
-        <form action="{{ url('/laboral/' . $laboral->id) }}" method="post" class="form-inline">
-            @csrf
-            {{ method_field('PATCH') }}
-            <br><br><br>
-            @include('persona.laboral.form');
-
-        </form>
-    </ul>
+    <div class="mx-auto"> 
+        <h2 class="text-center mb-4"><b><i>PROCESO DE DATOS LABORALES</i></b></h2>   
+            <form action="{{ url('/laboral/' . $laboral->id) }}" method="post">
+                @csrf
+                {{ method_field('PATCH') }}
+                @include('persona.laboral.form');
+            </form>
+    </div>
 @endsection

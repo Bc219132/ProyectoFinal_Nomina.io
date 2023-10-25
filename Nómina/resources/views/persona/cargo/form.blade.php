@@ -9,10 +9,10 @@
             </div>
                 <div class="modal-body">
                     <div class="form-group"> 
-                        <label for="id">Tipo de Cargo</label> 
+                        <label for="TipoCargo">Tipo de Cargo</label> 
                         <input type="text" class="form-control" name="TipoCargo"  id="TipoCargo" >
                         <br>
-                        <label for="NombreBanco">Sueldo</label>
+                        <label for="Sueldo">Sueldo Mensual $</label>
                         <input type="text" class="form-control" name="Sueldo" id="Sueldo">
                         <br>
                         <label for="id_gerencia">Gerencia a pertenecer</label>

@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dolar', function (Blueprint $table) {
+        Schema::create('deducciones', function (Blueprint $table) {
             $table->id();
-            $table->string('TasaActual');
+            $table->string('AnticipoDeSueldo');
+            $table->string('Ausencia');
+            $table->string('ExtravioDeCarnet');
+            $table->string('PermisoNoRemunerado');
+            $table->string('HoraNoTrabajada');
         });
     }
 
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dolar');
+        Schema::dropIfExists('deducciones');
     }
 };

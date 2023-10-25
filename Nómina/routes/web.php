@@ -12,6 +12,10 @@ use App\Http\Controllers\BancoController;
 use App\Http\Controllers\CargoController;
 use App\Http\Controllers\GerenciaController;
 use App\Http\Controllers\GeneroController;
+use App\Http\Controllers\AsignacionController;
+use App\Http\Controllers\Calculo_adController;
+use App\Http\Controllers\DeduccionController;
+use App\Http\Controllers\DolarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,13 +65,13 @@ Route::get('/Admin', [AdminController::class, 'index'])
 /*INICIO DE SESION CONSULTOR*/
 
 Route::get('/Consul', [ConsulController::class, 'index'])
-    ->middleware('auth.Consul')
+    ->middleware('auth')
     ->name('Consul.index');
 
 /*INICIO DE SESION EJECUTOR*/
 
 Route::get('/Ejec', [EjecController::class, 'index'])
-    ->middleware('auth.Ejec')
+    ->middleware('auth')
     ->name('Ejec.index');
 
 Route::resource('user', RegistroController::class)
@@ -83,7 +87,7 @@ Route::resource('persona.laboral', LaboralesController::class)
     ->shallow()
     ->middleware('auth.Conjun');
 
-/******VISTA CRUP GENERO||BANCO||GERENCIA||CARGO******/
+/******VISTA CRUP GENERO||BANCO||GERENCIA||CARGO||DOLAR******/
 
 Route::resource('genero', GeneroController::class)
     ->middleware('auth.Conjun');
@@ -93,3 +97,10 @@ Route::resource('gerencia', GerenciaController::class)
     ->middleware('auth.Conjun');
 Route::resource('cargo', CargoController::class)
     ->middleware('auth.Conjun');
+Route::resource('dolar', DolarController::class)
+    ->middleware('auth.Conjun');
+
+/******CALCULOS DE SALARIOS Y CESTA******/
+Route::resource('calculo', Calculo_adController::class)
+    ->middleware('auth.Conjun');
+

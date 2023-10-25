@@ -13,9 +13,8 @@ class DetallesCargos extends Model
         'id',
         'TipoCargo',
         'Sueldo',
-        'CestaTikect',
+        'id_cestatikect',
         'id_gerencia',
-        'id_dolar',
         ];
 
     public function gerencia()
@@ -23,4 +22,5 @@ class DetallesCargos extends Model
         return $this->belongsTo(Gerencia::class, 'id_gerencia');
     }
 
+    
 }

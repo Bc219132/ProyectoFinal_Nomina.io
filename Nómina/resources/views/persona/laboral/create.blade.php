@@ -1,20 +1,17 @@
 @extends('layouts.Admin')
-
 @section('title', 'Registro')
 
 @section('Contenido')
-    <ul>
-        <i>
-            <h2 class="text-center"><b>PROCESO DE DATOS LABORALES</b></h2>
-        </i>
-        <br><br>
-        <form action="{{ url("/persona/$id/laboral") }}" method="post" class="form-inline ">
+    <div class="mx-auto">
+        <h2 class="text-center"><b><i>PROCESO DE DATOS LABORALES</i></b></h2>
+        
+        <form action="{{ url("/persona/$id/laboral") }}" method="post">
             @csrf
-
             @include('persona.laboral.form');
-
-
         </form>
-
-    </ul>
+    </div>
 @endsection
+
+
+@extends('layouts.Admin')
+

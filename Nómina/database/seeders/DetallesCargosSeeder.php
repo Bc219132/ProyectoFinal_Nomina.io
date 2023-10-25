@@ -18,10 +18,9 @@ class DetallesCargosSeeder extends Seeder
         DB::table('detalles_cargos')->insert([
             'id' => '1',
             'TipoCargo' => 'Analista 1',
-            'Sueldo' => '20',
+            'Sueldo' => '100',
             'id_cestatikect' => '1',
             'id_gerencia' => '1',
-            'id_dolar' => '1',
         ]);
     }
 }

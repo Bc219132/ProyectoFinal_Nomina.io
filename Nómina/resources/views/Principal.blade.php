@@ -4,6 +4,6 @@
 
 @section('Contenido')
 
-    <h2>Ejecutor</h2>
+    <h2>Bienvenido Analista</h2>
 
 @endsection

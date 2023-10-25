@@ -32,7 +32,7 @@ class PersonStoreRequest extends FormRequest
             'identification' => 'required|regex:/^\d*$/|between:7,8|unique:personas,Cedula',
             'genre' => 'required|numeric|min:1',
             'birthdate' => 'required|before:tomorrow',
-            'rif' => 'required|regex:/^\d*$/|between:7,8|unique:personas,RIF',
+            'rif' => 'required|regex:/^\d*$/|between:9,10|unique:personas,RIF',
         ];
     }
 }

@@ -23,16 +23,17 @@ class PersonUpdateRequest extends FormRequest
      */
     public function rules()
     {
+        $id = request()->route('persona');
         return [
             'firstName' => 'required|alpha',
             'secondName' => 'nullable|alpha',
             'lastName' => 'required|alpha',
             'secondLastName' => 'nullable|alpha',
             'identificationType' => 'required|alpha',
-            'identification' => 'required|regex:/^\d*$/|between:7,8|unique:personas,Cedula',
+            'identification' => 'required|regex:/^\d*$/|between:7,8|unique:personas,Cedula,$id',
             'genre' => 'required|numeric|min:1',
             'birthdate' => 'required|before:tomorrow',
-            'rif' => 'required|regex:/^\d*$/|between:7,8|unique:personas,RIF',
+            'rif' => 'required|regex:/^\d*$/|between:9,10|unique:personas,RIF,$id',
         ];
     }
 }

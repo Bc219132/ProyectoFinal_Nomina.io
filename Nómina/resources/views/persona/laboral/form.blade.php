@@ -1,75 +1,71 @@
-<body>
-    <div class="container text-center">
-       <div class="form-group"> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
-          <label for="TipoContrato" style="color: rgba(0, 0, 0, 0.836);"><b>Tipo de Contrato</b></label> &nbsp &nbsp &nbsp
-          <select class="form-control" name="TipoContrato" id="TipoContrato" value="{{ isset($laboral->TipoContrato)?$laboral->TipoContrato:'' }}">
-            <option value="Fijo">Fijo</option>
+<div class="row justify-content-center p-3" style="max-width: 600px">   
+   <div class="col-12 col-sm-6">
+      <label for="TipoContrato" class="form-label text-black mt-3">Tipo de Contrato</label>
+         <select class="form-control" id="TipoContrato" name="TipoContrato"
+            required @isset($laboral) value="{{ $laboral->TipoContrato }}" @endisset>
+            <option selected value="Fijo">Fijo</option>
             <option value="Contratado">Contratado</option>
          </select>
-           &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-          <label for="id_banco" style="color: rgba(0, 0, 0, 0.836);"><b> N° Cuenta Bancaria </b></label> &nbsp &nbsp &nbsp
-          <select name="id_banco" class="form-control" id="id_banco" value="{{ isset($laboral->id_banco)?$laboral->id_banco:'' }}">
-             @foreach ($bancos as $banco)
-               <option value="{{ str_pad($banco['id'], 4, '0', STR_PAD_LEFT) }}">
-                  {{ str_pad($banco['id'], 4, '0', STR_PAD_LEFT) }}
-               </option>
-             @endforeach
-          </select>
-          <input type="text" class="form-control" name="NCuentaBancaria" id="NCuentaBancaria" value="{{ isset($laboral->NCuentaBancaria)?$laboral->NCuentaBancaria:'' }}" oninput="formatoNumeroCuenta(this)">
-       </div>
-          <br><br>
- 
-       <div class="form-group"> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  
-          <label for="TipoCuenta" style="color: rgba(0, 0, 0, 0.836);"><b>Tipo de Cuenta</b></label> &nbsp &nbsp &nbsp &nbsp 
-          <select class="form-control" name="TipoCuenta" id="TipoCuenta" value="{{ isset($laboral->TipoCuenta)?$laboral->TipoCuenta:'' }}">
-            <option value="Corriente">Corriente</option>
-            <option value="Ahorro">Ahorro</option>
-         </select>
-         &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
-         <label for="NivelAcademico" style="color: rgba(0, 0, 0, 0.836);"><b>Nivel Academico</b></label> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  
-            <select class="form-control" name="NivelAcademico" id="NivelAcademico" value="{{ isset($laboral->NivelAcademico)?$laboral->NivelAcademico:'' }}">
-                <option value="Basica">Básico</option>
-                <option value="Media Superior">Media Superior</option>
-                <option value="Superior">Superior</option>
-            </select>
-       </div>
-       <br><br>
-       <div class="form-group"> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
-         <label for="id_detalles_cargos" style="color: rgba(0, 0, 0, 0.836);"><b> Cargo a Ocupar </b></label> &nbsp &nbsp &nbsp &nbsp 
-            <select name="id_detalles_cargos" class="form-control" id="id_detalles_cargos" value="{{ isset($laboral->id_detalles_cargos )?$laboral->id_detalles_cargos:'' }}">
-               @foreach ($cargos as $cargo)
-                  <option value="{{$cargo['id'] }}">{{ $cargo['TipoCargo']}}</option>
+   </div>
+   <div class="col-12 col-sm-6">
+      <label for="id_banco" class="form-label text-black mt-3">N° Cuenta Bancaria</label>
+        <div class="d-flex">
+            <select class="form-control" id="id_banco" name="id_banco" style="width: 4.8rem" required>
+               @foreach ($bancos as $banco)
+                  <option @selected($loop->index == 0) value="{{ $banco['id'] }}">
+                     {{ str_pad($banco['id'], 4, '0', STR_PAD_LEFT) }}
+                  </option>
                @endforeach
-            </select> 
-         &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-        
-       <br><br>
-       <div class="form-group"> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
-         <label for="FechaIngreso" style="color: rgba(0, 0, 0, 0.836);"><b>Fecah de Ingreso</b></label> &nbsp &nbsp &nbsp &nbsp 
-         <input type="date" class="form-control " name="FechaIngreso" value="{{ isset($laboral->FechaIngreso)?$laboral->FechaIngreso:'' }}" id="FechaIngreso" >
-       </div>     
-       <br><br>
-       <div class="d-grid gap-2 col-30 mx-80"> 
-          <br>
-          <div>
-                <button type="submit" class="btn btn-primary btn-lg" id="botonGuardar" 
-                   >Guardar </button>
-          </div>
-       </div>
-    </div>  
-       
-      <script>
-         function formatoNumeroCuenta(input) {
-            // Eliminar cualquier guión existente en el valor
-            var valorSinGuiones = input.value.replace(/-/g, '');
+            </select>
+            <input type="text" class="form-control" id="NCuentaBancaria" name="NCuentaBancaria" required
+            pattern="\d{16,17}" @isset($laboral) value="{{ $laboral->NCuentaBancaria }}" @endisset>
+         </div>
+   </div>
+   <div class="col-12 col-sm-6">
+      <label for="TipoCuenta" class="form-label text-black mt-3">Tipo de Cuenta</label>
+         <select class="form-control" id="TipoCuenta" name="TipoCuenta"
+            required @isset($laboral) value="{{ $laboral->TipoCuenta }}" @endisset>
+            <option selected value="Ahorro">Ahorro</option>
+            <option value="Corriente">Corriente</option>
+         </select>
+   </div>
+   <div class="col-12 col-sm-6">
+      <label for="NivelAcademico" class="form-label text-black mt-3">Nivel Academico</label>
+         <select class="form-control" id="NivelAcademico" name="NivelAcademico"
+            required @isset($laboral) value="{{ $laboral->NivelAcademico }}" @endisset>
+            <option selected value="Básico">Básico</option>
+            <option value="Media Superior">Media Superior</option>
+            <option value="Superior">Superior</option>
+         </select>
+   </div>
+   <div class="col-12 col-sm-6">
+      <label for="id_detalles_cargos" class="form-label text-black mt-3">Genero</label>
+      <select class="form-control" id="id_detalles_cargos" name="id_detalles_cargos" required
+          @isset($laboral) value="{{ $laboral->id_detalles_cargos }}" @endisset>
+          @foreach ($cargos as $cargo)
+              <option @selected($loop->index == 0) value="{{ $cargo['id'] }}">{{ $cargo['TipoCargo'] }}</option>
+          @endforeach
+      </select>  
+  </div>
+  <div class="col-12 col-sm-6">
+      <label for="FechaIngreso" class="form-label text-black mt-3">Fecha de Ingreso</label>
+      <input type="date" max="{{ now()->format('Y-m-d') }}" class="form-control" aria-label="FechaIngreso"
+         id="FechaIngreso" name="FechaIngreso" required
+         @isset($laboral) value="{{ $laboral->FechaIngreso }}" @endisset>
+      @error('birthdate')
+         <div class="d-block invalid-feedback">{{ $message }}</div>
+      @enderror
+   </div>
 
-            // Agregar guiones en el formato deseado
-            var valorFormateado = valorSinGuiones.match(/\d{1,5}/g).join('-');
+   <div class="col-12 col-sm-6">
+      <label for="FechaEgreso" class="form-label text-black mt-3">Fecha de Egreso</label>
+      <input type="date" class="form-control" aria-label="FechaEgreso"
+         id="FechaEgreso" name="FechaEgreso"
+         @isset($laboral) value="{{ $laboral->FechaEgreso }}" @endisset>
+   </div>
 
-            // Establecer el valor formateado en el campo de entrada en tiempo real
-            input.value = valorFormateado;
-         }
-      </script>
- 
- </body>
-         
+   <div class="col-12">
+      <button type="submit" class="d-block btn btn-primary w-100 mt-3 mr-auto" id="botonGuardar" 
+      >Guardar </button>
+   </div> 
+</div>         

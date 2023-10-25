@@ -32,4 +32,19 @@ class DatosLaborales extends Model
         return $this->belongsTo(DetallesCargos::class, 'id_detalles_cargos');
     }
 
+    public function calculos()
+    {
+        return $this->hasOne(Calculo_ads::class, 'id_datos_laborales');
+    }
+
+    public function persona()
+    {
+        return $this->belongsTo(Persona::class, 'id_personas'); 
+    }
+
+    public function calculossave()
+    {
+        return $this->hasOne(Calculos_ad::class);
+    }
+
 }

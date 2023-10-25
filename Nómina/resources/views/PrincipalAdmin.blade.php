@@ -4,6 +4,6 @@
 
 @section('Contenido')
 
-    <h2>Administrador</h2>
+    <h2>Bienvenido Administrador</h2>
 
 @endsection

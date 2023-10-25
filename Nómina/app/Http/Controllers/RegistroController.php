@@ -38,6 +38,7 @@ class RegistroController extends Controller
 
         $user = user::create(request(['Nombre_Usuario', 'password', 'id_roles']));
 
-        auth()->login($user);
+        
+        return redirect('user')->with('mensaje', 'Usuario Creado Exitosamente');
     }
 }

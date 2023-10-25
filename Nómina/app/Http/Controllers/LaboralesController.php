@@ -49,8 +49,22 @@ class LaboralesController extends Controller
 
     public function update(Request $request, $id)
     {
+        // Realiza la validación de los datos actualizados
+        $validated = $request->validate([
+            'TipoContrato' => 'required',
+            'id_banco' => 'required',
+            'NCuentaBancaria' => 'required|regex:/\d{16,17}/',
+            'TipoCuenta' => 'required',
+            'NivelAcademico' => 'required',
+            'id_detalles_cargos' => 'required',
+            'FechaIngreso' => 'required|date',
+            'FechaEgreso' => 'nullable|date',
+        ]);
 
-        //
+        // Actualiza los datos laborales con los valores validados
+        DatosLaborales::findOrFail($id)->update($validated);
+
+        return redirect('persona')->with('mensaje', 'Datos laborales actualizados exitosamente');
     }
 
     public function destroy($id)

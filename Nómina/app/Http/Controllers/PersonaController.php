@@ -48,7 +48,7 @@ class PersonaController extends Controller
     {
         $generos = Generos::all();
         $persona = Persona::findOrFail($id);
-        return view('persona.edit', compact('persona','generos'))->with('mensaje', 'Empleado Editado exitosamente');;
+        return view('persona.edit', compact('persona','generos'))->with('mensaje', 'Empleado Editado exitosamente');
     }
 
     public function update(PersonUpdateRequest $request, $id)
@@ -72,6 +72,6 @@ class PersonaController extends Controller
     public function destroy($id)
     {
         Persona::destroy($id);
-        return redirect('persona')->with('mensaje', 'Empleado Eliminado exitosamente');;
+        return redirect('persona')->with('mensaje', 'Empleado Eliminado exitosamente');
     }
 }

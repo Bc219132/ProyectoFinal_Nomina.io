@@ -63,12 +63,21 @@
                         @endif
                     </td>
                     <td>
-                        <form action="{{ url('/persona/' . $persona->id) }}" class="d-inline" method="post">
-                            @csrf
-                            {{ method_field('DELETE') }}
-                            <input type="submit" onclick="return confirm('¿Desea borrar registro?')" class="btn btn-danger"
-                                value="Borrar">
-                        </form>
+                        <div style="display: inline-block;">
+                            @if ($persona->datosLaborales == null)
+                                <form action="{{ url('/persona/' . $persona->id) }}" class="d-inline" method="post">
+                                    @csrf
+                                    {{ method_field('DELETE') }}
+                                    <input type="submit" onclick="return confirm('¿Desea borrar registro?')" class="btn btn-danger" value="BORRAR">
+                                </form>
+                            @endif
+                        </div> 
+                        
+                        <div style="display: inline-block;">
+                            @isset($persona->datosLaborales)
+                             <a href="{{ route('laboral.edit', ['laboral' => $persona->datosLaborales->id]) }}" class="btn btn-warning">EGRESO</a>
+                            @endisset
+                        </div>
                     </td>
                 </tr>
             @endforeach
