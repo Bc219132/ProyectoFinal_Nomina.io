@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('Mes')->nullable();
             $table->string('Periodo')->nullable();
             $table->string('SueldoMen_Bs');
-            $table->string('SueldoMen_Bs');
             $table->foreignId('id_datos_laborales')
                   ->nullable()
                   ->constrained('datos_laborales')
