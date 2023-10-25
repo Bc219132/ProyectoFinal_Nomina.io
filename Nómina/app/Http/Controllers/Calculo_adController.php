@@ -5,71 +5,74 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Calculo_ads;
 use App\Models\DatosLaborales;
-use App\Models\Persona;
-use App\Models\DetallesCargos;
 
 class Calculo_adController extends Controller
 {
-    public function index(){
-        $laborales = DatosLaborales::all();
-        $calculos = Calculo_ads::all();
-        $personas = Persona::all();
-        $detallesCargos = DetallesCargos::all();
-    
-        return view('calculo.salario.index', compact('laborales', 'calculos', 'personas', 'detallesCargos'));
-    }
-
-    public function calculossave(Request $request)
+    public function index(Request $request)
     {
-        // Recopila los valores del formulario (año, mes, quincena)
-        $año = $request->input('year');
-        $mes = $request->input('month');
-        $quincena = $request->input('quincena');
+        $year = $request->query('year', now()->year);
+        $month = $request->query('month', now()->month);
+        $fortnight = $request->query('fortnight', now()->day > 14 ? 2 : 1);
+        $calculos = Calculo_ads::with('datosLaborales')->where([
+            'Año' => $year,
+            'Mes' => $month,
+            'Periodo' => $fortnight,
+        ])->get();
 
-        // Obtén todos los registros de DatosLaborales
-        $datosLaborales = DatosLaborales::all();
-
-        // Recorre cada registro y crea un nuevo registro en Calculos_ad
-        foreach ($datosLaborales as $datoLaboral) {
-            $calculo = new Calculos_ad([
-                'año' => $año,
-                'Mes' => $mes,
-                'Momento' => $quincena,
-                // Otros campos que desees guardar en Calculos_ad
-            ]);
-
-            // Asocia el cálculo con el registro de DatosLaborales
-            $datoLaboral->calculos()->save($calculo);
-        }
+        return view('calculo.salario.index', compact('calculos'));
     }
 
-    public function create(){
-       //
-       
+    public function create()
+    {
+        //
+
     }
 
 
 
     public function store(Request $request)
     {
-        //
-        
-        
+        $action = $request->input('action');
+
+
+        $year = $request->input('year');
+        $month = $request->input('month');
+        $fortnight = $request->input('fortnight');
+
+        if ($action == 'buscar') {
+            return redirect()->route('calculo.index', compact('year', 'month', 'fortnight'));
+        }
+
+        $datosLaborales = DatosLaborales::all('id')->map(function ($obj) {
+            return $obj->id;
+        });
+
+        foreach ($datosLaborales as $id) {
+            Calculo_ads::create([
+                'Año' => $year,
+                'Mes' => $month,
+                'Periodo' => $fortnight,
+                'id_datos_laborales' => $id
+                // Pendientes las deducciones y asignaciones
+            ]);
+        }
+
+        return redirect()->route('calculo.index', compact('year', 'month', 'fortnight'));
     }
 
     public function edit($id)
     {
-       //
+        //
     }
 
     public function update(Request $request, $id)
     {
-       //
+        //
     }
 
     public function destroy($id)
     {
         //
-        
+
     }
 }

@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\DatosLaborales;
+use App\Models\Persona;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -35,17 +37,24 @@ class DatabaseSeeder extends Seeder
 
         //Cestatikect
         $this->call(CestatikectSeeder::class);
-        
+
         //Cargo
         $this->call(DetallesCargosSeeder::class);
 
         //usuario Maestro
-        $user = new User;
-        $user->Nombre_Usuario = 'AdminSecurity';
-        $user->password = ('1234/#*');
-        $user->id_roles = '1';
+        User::insert([
+            [
+                'Nombre_Usuario' => 'AdminSecurity',
+                'password' => Hash::make('1234/#*'),
+                'id_roles' => 1
+            ],
+            [
+                'Nombre_Usuario' => 'wizard',
+                'password' => Hash::make('password'),
+                'id_roles' => 1
+            ]
+        ]);
 
-        $user-> save();
-
+        DatosLaborales::factory()->count(10)->create();
     }
 }
