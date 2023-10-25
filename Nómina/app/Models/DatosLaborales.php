@@ -39,12 +39,6 @@ class DatosLaborales extends Model
 
     public function persona()
     {
-        return $this->belongsTo(Persona::class, 'id_personas'); 
+        return $this->belongsTo(Persona::class, 'id_personas');
     }
-
-    public function calculossave()
-    {
-        return $this->hasOne(Calculos_ad::class);
-    }
-
 }

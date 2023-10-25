@@ -18,27 +18,28 @@ return new class extends Migration
             $table->string('Año')->nullable();
             $table->string('Mes')->nullable();
             $table->string('Periodo')->nullable();
-            $table->string('SueldoMen_Bs');
+            $table->string('SueldoMen_Bs')->nullable();
             $table->foreignId('id_datos_laborales')
-                  ->nullable()
-                  ->constrained('datos_laborales')
-                  ->cascadeOnUpdate()
-                  ->nullOnDelete();
+                ->nullable()
+                ->constrained('datos_laborales')
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
             $table->foreignId('id_asignaciones')
                 ->nullable()
                 ->constrained('asignaciones')
                 ->cascadeOnUpdate()
                 ->nullOnDelete();
-         $table->foreignId('id_deducciones')
+            $table->foreignId('id_deducciones')
                 ->nullable()
                 ->constrained('deducciones')
                 ->cascadeOnUpdate()
                 ->nullOnDelete();
-        $table->foreignId('id_dolars')
+            $table->foreignId('id_dolars')
                 ->nullable()
                 ->constrained('dolars')
                 ->cascadeOnUpdate()
-                ->nullOnDelete();       
+                ->nullOnDelete();
+            $table->timestamps();
         });
     }
 
