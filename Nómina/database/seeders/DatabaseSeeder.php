@@ -45,11 +45,13 @@ class DatabaseSeeder extends Seeder
         User::insert([
             [
                 'Nombre_Usuario' => 'AdminSecurity',
+                'email' => 'adminsecurity@gmail.com',
                 'password' => Hash::make('1234/#*'),
                 'id_roles' => 1
             ],
             [
                 'Nombre_Usuario' => 'wizard',
+                'email' => 'jonathanalvarado1407@gmail.com',
                 'password' => Hash::make('password'),
                 'id_roles' => 1
             ]

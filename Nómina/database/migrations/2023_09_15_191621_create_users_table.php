@@ -16,17 +16,18 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('Nombre_Usuario')->unique();
+            $table->string('email')->unique();
             $table->string('password');
             $table->foreignId('id_roles')
-                  ->nullable()
-                  ->constrained('roles')
-                  ->cascadeOnUpdate()
-                  ->nullOnDelete();
+                ->nullable()
+                ->constrained('roles')
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
             $table->foreignId('id_personas')
-                  ->nullable()
-                  ->constrained('personas')
-                  ->cascadeOnUpdate()
-                  ->nullOnDelete();
+                ->nullable()
+                ->constrained('personas')
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
             $table->rememberToken();
             $table->timestamps();
         });
