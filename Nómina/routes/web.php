@@ -12,11 +12,14 @@ use App\Http\Controllers\BancoController;
 use App\Http\Controllers\CargoController;
 use App\Http\Controllers\GerenciaController;
 use App\Http\Controllers\GeneroController;
-use App\Http\Controllers\AsignacionController;
 use App\Http\Controllers\Calculo_adController;
-use App\Http\Controllers\DeduccionController;
 use App\Http\Controllers\DolarController;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -104,3 +107,50 @@ Route::resource('dolar', DolarController::class)
 Route::resource('calculo', Calculo_adController::class)
     ->middleware('auth.Conjun');
 
+Route::get('/forgot-password', function () {
+    return view('auth.forgot-password');
+})->middleware('guest')->name('password.request');
+
+Route::post('/forgot-password', function (Request $request) {
+    $request->validate(['correo' => 'required|email']);
+
+    $status = Password::sendResetLink(
+        ['email' => $request->input('correo')]
+    );
+
+    return $status === Password::RESET_LINK_SENT
+        ? back()->with(['status' => __($status)])
+        : back()->withErrors(['correo' => __($status)]);
+})->middleware('guest')->name('password.email');
+
+Route::get('/reset-password/{token}', function ($token) {
+    return view('auth.reset-password', ['token' => $token]);
+})->middleware('guest')->name('password.reset');
+
+Route::post('/reset-password', function (Request $request) {
+    $request->validate([
+        'token' => 'required',
+        'correo' => 'required|email',
+        'password' => 'required|min:8|confirmed',
+    ]);
+
+    $data = $request->only('password', 'password_confirmation', 'token');
+    $data['email'] = $request->input('correo');
+
+    $status = Password::reset(
+        $data,
+        function ($user, $password) {
+            $user->forceFill([
+                'password' => $password
+            ])->setRememberToken(Str::random(60));
+
+            $user->save();
+
+            event(new PasswordReset($user));
+        }
+    );
+
+    return $status === Password::PASSWORD_RESET
+        ? redirect()->route('login.index')->with('status', __($status))
+        : back()->withErrors(['correo' => [__($status)]]);
+})->middleware('guest')->name('password.update');

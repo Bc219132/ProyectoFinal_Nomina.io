@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Login</title>
+    <title>Olvido Contraseña</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,35 +22,38 @@
             </div>
             <div class="col-md-6">
                 <h1 class="text-center">Sistema de Nómina</h1>
-                <form class="mt-4" method="POST" action="{{ route('login.store') }}">
+                @if (Session::has('status'))
+                    <div class="d-block invalid-feedback mb-4 text-green">
+                        {{ $Session::get('status') }}
+                    </div>
+                @endif
+
+                <form class="mt-4" method="POST" action="{{ route('password.email') }}">
                     @csrf
                     <div class="divider d-flex align-items-center my-4">
-                        <p class="text-center fw-bold mx-3 mb-0">Inicio de sesión</p>
+                        <p class="text-center fw-bold mx-3 mb-0">Olvido Contraseña</p>
                     </div>
                     <div class="mb-3">
-                        <label for="correo" class="form-label">Correo</label>
-                        <input type="text" class="form-control" id="correo" name="correo"
+                        <label for="email" class="form-label">Correo</label>
+                        <input type="email" class="form-control" id="correo" name="correo"
                             aria-describedby="correo" placeholder="john@doe.com">
                     </div>
-                    <div class="mb-3">
-                        <label for="contraseña" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="contraseña" name="contraseña">
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="remember-me" name="remember-me">
-                        <label class="form-check-label" for="remember-me">Recuerdame</label>
-                    </div>
-                    @error('message')
+                    @error('correo')
+                        <div class="d-block invalid-feedback mb-4">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                    @error('status')
                         <div class="d-block invalid-feedback mb-4">
                             {{ $message }}
                         </div>
                     @enderror
 
                     <div class="d-flex justify-content-end mb-4">
-                        <a href="{{ route('password.email') }}">Olvido Contraseña</a>
+                        <a href="{{ route('login.index') }}">Login</a>
                     </div>
 
-                    <button type="submit" class="btn btn-primary w-100">Inicio</button>
+                    <button type="submit" class="btn btn-primary w-100">Enviar enlace</button>
                 </form>
             </div>
         </div>

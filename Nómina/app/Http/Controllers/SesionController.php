@@ -14,10 +14,10 @@ class SesionController extends Controller
 
     public function store(Request $request)
     {
-        $credentials = ['Nombre_Usuario' => $request->input('username'), 'password' => $request->input('password')];
+        $credentials = ['email' => $request->input('correo'), 'password' => $request->input('contraseña')];
         if (!auth()->attempt($credentials, $request->boolean('remember-me')) && !auth()->viaRemember()) {
             return back()->withErrors([
-                'message' => 'Nombre de usuario o contraseña incorrectos.',
+                'message' => 'Correo o contraseña incorrectos.',
             ]);
         }
         if (auth()->user()->id_roles == '1') {
