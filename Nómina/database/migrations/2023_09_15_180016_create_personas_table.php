@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('RIF')->unique();
             $table->string('FechaNacimiento');
             $table->string('TipoDocumento');
+            $table->string('NumTelef');
+            $table->string('Correo');
             $table->foreignId('id_generos')
                   ->nullable()
                   ->constrained('generos')

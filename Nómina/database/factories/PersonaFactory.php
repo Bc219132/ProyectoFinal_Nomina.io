@@ -23,6 +23,8 @@ class PersonaFactory extends Factory
             'Cedula' => fake()->randomNumber(7, true),
             'RIF' => fake()->randomNumber(7, true),
             'FechaNacimiento' => fake()->date(),
+            'NumTelef' => '0424' . fake()->randomNumber(7, true),
+            'Correo' => fake()->userName() . '@gmail.com',
             'TipoDocumento' => 'V',
             'id_generos' => Generos::inRandomOrder()->first(),
         ];
