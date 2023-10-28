@@ -17,7 +17,7 @@ class BancoSeeder extends Seeder
     {
         DB::table('bancos')->insert([
             'id' => '0102',
-            'NombreBanco' => 'Banco de Venezuela',
+            'NombreBanco' => 'Venezuela',
         ]);
 
         DB::table('bancos')->insert([

@@ -13,9 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cestatikect', function (Blueprint $table) {
+        Schema::create('deducciones', function (Blueprint $table) {
             $table->id();
-            $table->string('montoCk');
+            $table->string('AUSENCIA')->nullable();
+            $table->string('SSO')->nullable();
+            $table->string('RPE')->nullable();
+            $table->string('FAOV')->nullable();
+            $table->string('TotalD');
+            
         });
     }
 
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cestatikect');
+        Schema::dropIfExists('deducciones');
     }
 };

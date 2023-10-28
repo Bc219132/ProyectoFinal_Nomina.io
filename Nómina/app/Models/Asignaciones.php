@@ -11,11 +11,7 @@ class Asignaciones extends Model
 
     protected $fillable = [
         'id',
-        'Redoble',
-        'Feriado',
-        'DiaLibreTrabajado',
-        'HorarioDiurno',
-        'HorarioNocturnos',
-        'DomingoDirnoTrabajado',
+        'NomA',
+        'CalcA',
     ];
 }

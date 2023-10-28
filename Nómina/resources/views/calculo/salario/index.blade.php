@@ -80,7 +80,6 @@
             <th>Cédula</th>
             <th>Cargo</th>
             <th>Salario Mensual</th>
-            <th>Salario Quincenal</th>
             <th>Asignación</th>
             <th>Deducción</th>
             <th>Monto a Pagar</th>
@@ -105,38 +104,43 @@
                             @endif
                         </td>
                         <td>
-                            @if (!empty($laboral->persona) && !empty($laboral->persona->Cedula))
-                                {{ $laboral->persona->Cedula }}
+                            @if (!empty($laboral->persona) && !empty($laboral->persona
+                                ->Cedula))
+                                {{ $laboral->persona->TipoDocumento}}
+                                {{ $laboral->persona->Cedula}}
                             @endif
                         </td>
                         <td>
-                            @if (!empty($laboral->persona) && !empty($laboral->persona->Cedula))
-                                {{ $laboral->persona->Cedula }}
-                            @endif
-                        </td>
-                        <td>
-                            @if (!empty($laboral->detallesCargos) && !empty($laboral->detallesCargos->TipoCargo))
+                            @if (!empty($laboral->detallesCargos) && !empty($laboral
+                                ->detallesCargos->TipoCargo))
                                 {{ $laboral->detallesCargos->TipoCargo }}
                             @endif
                         </td>
                         <td>
-                            @if (!empty($laboral->detallesCargos) && !empty($laboral->detallesCargos->TipoCargo))
-                                {{ $laboral->detallesCargos->TipoCargo }}
+                            @if (!empty($laboral->calculos) && !empty($laboral->calculos
+                                ->SueldoMen_Bs))
+                                <b>Bs-</b> {{ str_replace(',', '.', number_format($laboral->calculos->SueldoMen_Bs, 
+                                2, ',', '.')) }}
+                            @endif   
+                        </td>
+                        <td>
+                            @if (!empty($laboral->calculos) && !empty($laboral->calculos
+                                ->TotalA))
+                                <b>Bs-</b> {{ str_replace(',', '.', number_format($laboral->calculos->TotalA, 
+                                2, '.', ',')) }}
+                            @endif    
+                        </td>
+                        <td>
+                            @if (!empty($laboral->calculos) && !empty($laboral->calculos
+                                    ->TotalD))
+                                    <b>Bs-</b> {{ str_replace(',', '.', number_format($laboral->calculos->TotalD, 
+                                    2, '.', ',')) }}
                             @endif
                         </td>
                         <td>
-                            @if (!empty($laboral->detallesCargos) && !empty($laboral->detallesCargos->TipoCargo))
-                                {{ $laboral->detallesCargos->TipoCargo }}
-                            @endif
-                        </td>
-                        <td>
-                            @if (!empty($laboral->detallesCargos) && !empty($laboral->detallesCargos->TipoCargo))
-                                {{ $laboral->detallesCargos->TipoCargo }}
-                            @endif
-                        </td>
-                        <td>
-                            @if (!empty($laboral->detallesCargos) && !empty($laboral->detallesCargos->TipoCargo))
-                                {{ $laboral->detallesCargos->TipoCargo }}
+                            @if (!empty($laboral->calculos) && !empty($laboral->calculos->TotalAbonar))
+                                <b>Bs-</b> {{ str_replace(',', '.', number_format($laboral->calculos->TotalAbonar, 
+                                2, '.', ',')) }}
                             @endif
                         </td>
                         <td>

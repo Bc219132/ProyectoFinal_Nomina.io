@@ -75,7 +75,7 @@
                         
                         <div style="display: inline-block;">
                             @isset($persona->datosLaborales)
-                             <a href="{{ route('laboral.edit', ['laboral' => $persona->datosLaborales->id]) }}" class="btn btn-warning">EGRESO</a>
+                             <a href="{{ route('laboral.edit', ['laboral' => $persona->datosLaborales->id]) }}" class="btn btn-warning">ESTAT/EDIC</a>
                             @endisset
                         </div>
                     </td>

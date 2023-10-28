@@ -36,6 +36,11 @@ return new class extends Migration
                   ->constrained('personas')
                   ->cascadeOnUpdate()
                   ->cascadeOnDelete(); // Habilitar eliminación en cascada
+            $table->foreignId('id_historico_emps')
+                  ->nullable()
+                  ->constrained('historico_emps')
+                  ->cascadeOnUpdate()
+                  ->nullOnDelete(); 
             $table->timestamps();
         });
     }

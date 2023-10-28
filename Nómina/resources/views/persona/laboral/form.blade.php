@@ -8,17 +8,17 @@
          </select>
    </div>
    <div class="col-12 col-sm-6">
-      <label for="id_banco" class="form-label text-black mt-3">N° Cuenta Bancaria</label>
+      <label for="id_banco" class="form-label text-black mt-3">N° de Cuenta y Banco</label>
         <div class="d-flex">
-            <select class="form-control" id="id_banco" name="id_banco" style="width: 4.8rem" required>
+            <select class="form-control" id="id_banco" name="id_banco" style="width: 6.5rem" required>
                @foreach ($bancos as $banco)
                   <option @selected($loop->index == 0) value="{{ $banco['id'] }}">
-                     {{ str_pad($banco['id'], 4, '0', STR_PAD_LEFT) }}
+                     {{ str_pad($banco['NombreBanco'], 4, '0', STR_PAD_LEFT) }}
                   </option>
                @endforeach
             </select>
             <input type="text" class="form-control" id="NCuentaBancaria" name="NCuentaBancaria" required
-            pattern="\d{16,17}" @isset($laboral) value="{{ $laboral->NCuentaBancaria }}" @endisset>
+            pattern="\d{19,20}" @isset($laboral) value="{{ $laboral->NCuentaBancaria }}" @endisset>
          </div>
    </div>
    <div class="col-12 col-sm-6">

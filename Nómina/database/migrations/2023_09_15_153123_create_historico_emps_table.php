@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('deducciones', function (Blueprint $table) {
+        Schema::create('historico_emps', function (Blueprint $table) {
             $table->id();
-            $table->string('AnticipoDeSueldo');
-            $table->string('Ausencia');
-            $table->string('ExtravioDeCarnet');
-            $table->string('PermisoNoRemunerado');
-            $table->string('HoraNoTrabajada');
+            $table->string('NombreCompleto');
+            $table->string('Cedula');
+            $table->string('FechaIngreso');
+            $table->string('FechaEgreso');
+            $table->string('Cargo');
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deducciones');
+        Schema::dropIfExists('historico_emp');
     }
 };

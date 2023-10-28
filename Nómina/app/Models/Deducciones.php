@@ -11,10 +11,7 @@ class Deducciones extends Model
 
     protected $fillable = [
         'id',
-        'AnticipoDeSueldo',
-        'Ausencia',
-        'ExtravioDeCarnet',
-        'PermisoNoRemunerado',
-        'HoraNoTrabajada',
+        'NomD',
+        'CalcD',
     ];
 }

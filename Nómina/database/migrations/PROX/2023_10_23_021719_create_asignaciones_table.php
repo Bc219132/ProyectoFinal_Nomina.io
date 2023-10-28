@@ -15,12 +15,11 @@ return new class extends Migration
     {
         Schema::create('asignaciones', function (Blueprint $table) {
             $table->id();
-            $table->string('Redoble');
-            $table->string('Feriado');
-            $table->string('DiaLibreTrabajado');
-            $table->string('HorarioDiurno');
-            $table->string('HorarioNocturnos');
-            $table->string('DomingoDirnoTrabajado');
+            $table->string('DIATRABAJADO')->nullable();
+            $table->string('VACACIONESMAS')->nullable();
+            $table->string('CESTATICKETS')->nullable();
+            $table->string('UTILIDADES')->nullable();
+            $table->string('TotalA');
         });
     }
 

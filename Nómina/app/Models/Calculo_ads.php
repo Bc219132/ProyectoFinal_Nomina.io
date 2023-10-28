@@ -9,14 +9,27 @@ class Calculo_ads extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+    
     protected $fillable = [
         'id',
         'Año',
         'Mes',
         'Periodo',
+        'SueldoMen_Bs',
+        'TotalAbonar',
+        'DiasTrabajados',
+        'Vacaciones',
+        'CestaTickes',
+        'Utilidades',
+        'TotalA',
+        'Ausencias',
+        'Sso',
+        'Rpe',
+        'Faov',
+        'TotalD',
         'id_datos_laborales',
-        'id_asignaciones',
-        'id_deducciones',
+        'id_historico_pagos',
     ];
 
     public function datosLaborales()

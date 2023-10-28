@@ -18,28 +18,29 @@ return new class extends Migration
             $table->string('Año')->nullable();
             $table->string('Mes')->nullable();
             $table->string('Periodo')->nullable();
+            $table->string('CanFalta')->nullable();
             $table->string('SueldoMen_Bs')->nullable();
+            $table->string('TotalAbonar')->nullable();
+            $table->string('DiasTrabajados')->nullable();
+            $table->string('Vacaciones')->nullable();
+            $table->string('CestaTickes')->nullable();
+            $table->string('Utilidades')->nullable();
+            $table->string('TotalA')->nullable();
+            $table->string('Ausencias')->nullable();
+            $table->string('Sso')->nullable();
+            $table->string('Rpe')->nullable();
+            $table->string('Faov')->nullable();
+            $table->string('TotalD')->nullable();
             $table->foreignId('id_datos_laborales')
                 ->nullable()
                 ->constrained('datos_laborales')
                 ->cascadeOnUpdate()
                 ->nullOnDelete();
-            $table->foreignId('id_asignaciones')
+            $table->foreignId('id_historico_pagos')
                 ->nullable()
-                ->constrained('asignaciones')
+                ->constrained('historico_pagos')
                 ->cascadeOnUpdate()
-                ->nullOnDelete();
-            $table->foreignId('id_deducciones')
-                ->nullable()
-                ->constrained('deducciones')
-                ->cascadeOnUpdate()
-                ->nullOnDelete();
-            $table->foreignId('id_dolars')
-                ->nullable()
-                ->constrained('dolars')
-                ->cascadeOnUpdate()
-                ->nullOnDelete();
-            $table->timestamps();
+                ->nullOnDelete(); 
         });
     }
 

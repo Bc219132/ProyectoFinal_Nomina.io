@@ -41,4 +41,5 @@ class DatosLaborales extends Model
     {
         return $this->belongsTo(Persona::class, 'id_personas');
     }
+
 }

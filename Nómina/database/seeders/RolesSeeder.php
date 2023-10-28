@@ -21,11 +21,6 @@ class RolesSeeder extends Seeder
         ]);
 
         DB::table('Roles')->insert([
-            'id' => '2',
-            'Tipo_Rol' => 'Consultor',
-        ]);
-
-        DB::table('Roles')->insert([
             'id' => '3',
             'Tipo_Rol' => 'Ejecutor',
         ]);

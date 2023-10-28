@@ -28,8 +28,6 @@ return new class extends Migration
                 ->constrained('personas')
                 ->cascadeOnUpdate()
                 ->nullOnDelete();
-            $table->rememberToken();
-            $table->timestamps();
         });
     }
 

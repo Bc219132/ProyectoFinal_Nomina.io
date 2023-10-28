@@ -19,7 +19,7 @@ class DatosLaboralesFactory extends Factory
     {
         $accountNumber = '';
 
-        for ($i = 0; $i < 16; ++$i) {
+        for ($i = 0; $i < 20; ++$i) {
             $accountNumber .= fake()->randomDigit();
         }
 
@@ -32,7 +32,8 @@ class DatosLaboralesFactory extends Factory
             'NivelAcademico' => 'Superior',
             'id_personas' => function () {
                 return Persona::factory()->create()->id;
-            }
+            },
+            'id_detalles_cargos' => 1,
         ];
     }
 }

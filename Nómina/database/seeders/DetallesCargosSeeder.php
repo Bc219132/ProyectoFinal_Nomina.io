@@ -19,8 +19,9 @@ class DetallesCargosSeeder extends Seeder
             'id' => '1',
             'TipoCargo' => 'Analista 1',
             'Sueldo' => '100',
-            'id_cestatikect' => '1',
+            'id_cestatikects' => '1',
             'id_gerencia' => '1',
+            'id_dolars' => '1',
         ]);
     }
 }

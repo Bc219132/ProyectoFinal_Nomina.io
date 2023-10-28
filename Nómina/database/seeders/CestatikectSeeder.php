@@ -15,7 +15,7 @@ class CestatikectSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cestatikect')->insert([
+        DB::table('cestatikects')->insert([
             'id' => '1',
             'montoCk' => '30',
         ]);

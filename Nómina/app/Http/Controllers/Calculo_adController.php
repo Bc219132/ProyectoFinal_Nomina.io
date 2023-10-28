@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Calculo_ads;
 use App\Models\DatosLaborales;
+use App\Models\DetallesCargos;
+use App\Models\Dolar;
+use App\Models\Cestatikect;
 
 class Calculo_adController extends Controller
 {
@@ -47,16 +50,47 @@ class Calculo_adController extends Controller
             return $obj->id;
         });
 
-        foreach ($datosLaborales as $id) {
+        $datosLaborales = DatosLaborales::all();
+
+        foreach ($datosLaborales as $datosLaboral) {
+
+            $tasadolar = $datosLaboral->detallesCargos->dolars->TasaActual; //Obtener Dolar
+            $Sueldo = $datosLaboral->detallesCargos->Sueldo; //Obtener Sueldo
+            $SueldoMen_Bs = $tasadolar * $Sueldo; // Calcular Sueldo Mensual 
+            $MontoCesta = $datosLaboral->detallesCargos->cestaTickes->montoCk; //Obtener CestaTikect
+            $CestaTickest = ($fortnight === 1) ? $tasadolar * $MontoCesta : 0;
+            $DiasTrabajados = ($SueldoMen_Bs / 30) * 15; //Calcular DiasTrabajados
+            $Sso = (((650.00 * 12/52) * 0.04) * 5); //Calculo Sso
+            $Rpe = (((13000.00 * 12/52)* 0.0050) * 5); //Calculo Rpe
+            $Faov =  $SueldoMen_Bs * 0.0100;
+            $Vacaciones = 0;
+            $Utilidades = 0;
+            $Ausencias = 0;
+            $TotalA = $DiasTrabajados + $Vacaciones + $CestaTickest + $Utilidades;
+            $TotalD = $Ausencias + $Sso + $Sso + $Faov;
+
             Calculo_ads::create([
                 'Año' => $year,
                 'Mes' => $month,
                 'Periodo' => $fortnight,
-                'id_datos_laborales' => $id
-                // Pendientes las deducciones y asignaciones
+                'id_datos_laborales' => $datosLaboral->id, 
+                'SueldoMen_Bs' => $SueldoMen_Bs,
+                'DiasTrabajados' => $DiasTrabajados,
+                'CestaTickes' => $CestaTickest,
+                'Sso' => $Sso,
+                'Rpe' => $Rpe,
+                'Faov' => $Faov,
+                'Ausencias' => $Ausencias,
+                'Vacaciones' => $Vacaciones,
+                'Utilidades' => $Utilidades,
+
+                //Total Asignación y Deducción
+                'TotalA' => $TotalA,
+                'TotalD' => $TotalD, 
+                'TotalAbonar' => $TotalA - $TotalD,
+
             ]);
         }
-
         return redirect()->route('calculo.index', compact('year', 'month', 'fortnight'));
     }
 

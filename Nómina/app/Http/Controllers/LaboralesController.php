@@ -10,6 +10,7 @@ use App\Models\Gerencia;
 use App\Models\Banco;
 use App\Models\Cargo;
 use App\Models\DetallesCargos;
+use App\Models\Calculo_ads;
 
 class LaboralesController extends Controller
 {

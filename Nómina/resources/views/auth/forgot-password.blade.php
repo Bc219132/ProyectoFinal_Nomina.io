@@ -24,7 +24,7 @@
                 <h1 class="text-center">Sistema de Nómina</h1>
                 @if (Session::has('status'))
                     <div class="d-block invalid-feedback mb-4 text-green">
-                        {{ $Session::get('status') }}
+                        {{ Session::get('status') }}
                     </div>
                 @endif
 

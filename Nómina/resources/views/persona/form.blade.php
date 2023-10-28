@@ -65,7 +65,11 @@
     </div>
     <div class="col-12 col-sm-6">
         <label for="birthdate" class="form-label text-black mt-3">Fecha de nacimiento</label>
-        <input type="date" max="{{ now()->format('Y-m-d') }}" class="form-control" aria-label="Primer apellido"
+        @php
+            // Calcula la fecha mínima (18 años atrás desde la fecha actual)
+            $fechaMinima = now()->subYears(18)->format('Y-m-d');
+        @endphp
+        <input type="date" max="{{ $fechaMinima }}" class="form-control" aria-label="Primer apellido"
             id="birthdate" name="birthdate" required
             @isset($persona) value="{{ $persona->FechaNacimiento }}" @endisset>
         @error('birthdate')
