@@ -10,10 +10,10 @@
 
     <ul>
         <i>
-            <h2>Listado de Bancos</h2>
+            <h2>Listado de Generos</h2>
         </i>
         <a href="{{ url('#') }}" class="btn btn-secondary" data-toggle="modal" data-target="#modalCreateGenero"> Registrar
-            nuevo Banco </a>
+            nuevo Genero </a>
         <br>
     </ul>
 

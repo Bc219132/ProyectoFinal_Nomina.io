@@ -13,7 +13,7 @@
             <h2>Listado de Gerencia</h2>
         </i>
         <a href="{{ url('#') }}" class="btn btn-secondary" data-toggle="modal" data-target="#modalCreateGerencia">
-            Registrar nuevo Banco </a>
+            Registrar nueva Gerencia </a>
         <br>
     </ul>
 
