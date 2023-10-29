@@ -13,7 +13,7 @@
             <h2>Listado de Cargos</h2>
         </i>
         <a href="{{ url('#') }}" class="btn btn-secondary" data-toggle="modal" data-target="#modalCreateCargo"> Registrar
-            nuevo Banco </a>
+            nuevo Cargo </a>
         <br>
     </ul>
 

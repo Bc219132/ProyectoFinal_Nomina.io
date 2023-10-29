@@ -62,7 +62,6 @@
                     <button type="submit" class="btn btn-secondary mr-2" name="action" value="buscar">Buscar</button>
                     <button type="submit" class="btn btn-secondary mr-2">Generar total a
                         pagar</button>
-                    <a href="{{ url('dolar') }}" class="btn btn-primary">Ver/Editar Dolar</a>
                 </div>
 
             </form>

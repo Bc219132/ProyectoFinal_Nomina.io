@@ -32,34 +32,11 @@
           <a class="navbar-brand brand-logo" href="#" style="color: #FFFFFF;">Altus system</a>
           <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('assets/images/logo-mini.svg')}}" alt="logo" /></a>
         </div>
-        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <div class="navbar-menu-wrapper d-flex align-items-between">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
           </button>
-          <div class="search-field d-none d-xl-block">
-            <form class="d-flex align-items-center h-100" action="#">
-              <div class="input-group">
-                <div class="input-group-prepend bg-transparent">
-                  <i class="input-group-text border-0 mdi mdi-magnify"></i>
-                </div>
-                <input type="text" class="form-control bg-transparent border-0" placeholder="Search products">
-              </div>
-            </form>
-          </div>
           <ul class="navbar-nav navbar-nav-right">
-            <li class="nav-item  dropdown d-none d-md-block">
-              <a class="nav-link dropdown-toggle" id="reportDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> Reports </a>
-              <div class="dropdown-menu navbar-dropdown" aria-labelledby="reportDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-file-pdf mr-2"></i>PDF </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-file-excel mr-2"></i>Excel </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-file-word mr-2"></i>doc </a>
-              </div>
-            </li>
             <li class="nav-item nav-language dropdown d-none d-md-block">
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
                 <a class="dropdown-item" href="#">
@@ -92,31 +69,9 @@
                   <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('assets/images/faces/face28.png')}}" alt="">
                 </div>
                 <div class="p-2">
-                  <h5 class="dropdown-header text-uppercase pl-2 text-dark">User Options</h5>
-                  <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="#">
-                    <span>Inbox</span>
-                    <span class="p-0">
-                      <span class="badge badge-primary">3</span>
-                      <i class="mdi mdi-email-open-outline ml-1"></i>
-                    </span>
-                  </a>
-                  <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="#">
-                    <span>Profile</span>
-                    <span class="p-0">
-                      <span class="badge badge-success">1</span>
-                      <i class="mdi mdi-account-outline ml-1"></i>
-                    </span>
-                  </a>
-                  <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                    <span>Settings</span>
-                    <i class="mdi mdi-settings"></i>
-                  </a>
+                  
                   <div role="separator" class="dropdown-divider"></div>
-                  <h5 class="dropdown-header text-uppercase  pl-2 text-dark mt-2">Actions</h5>
-                  <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="#">
-                    <span>Lock Account</span>
-                    <i class="mdi mdi-lock ml-1"></i>
-                  </a>
+                  <h5 class="dropdown-header text-uppercase  pl-2 text-dark mt-2">Acciones</h5>
                   <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="{{ route('login.destroy') }}">
                     <span>Cerrar Sesión</span>
                     <i class="mdi mdi-logout ml-1"></i>
@@ -125,93 +80,6 @@
               </div>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <i class="mdi mdi-email-outline"></i>
-                <span class="count-symbol bg-success"></span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-                <h6 class="p-3 mb-0 bg-primary text-white py-4">Messages</h6>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="{{ asset('assets/images/faces/face.jpg')}}" alt="image" class="profile-pic">
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark send you a message</h6>
-                    <p class="text-gray mb-0"> 1 Minutes ago </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="{{ asset('assets/images/faces/face2.jpg')}}" alt="image" class="profile-pic">
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Cregh send you a message</h6>
-                    <p class="text-gray mb-0"> 15 Minutes ago </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="{{ asset('assets/images/faces/face3.jpg')}}" alt="image" class="profile-pic">
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Profile picture updated</h6>
-                    <p class="text-gray mb-0"> 18 Minutes ago </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <h6 class="p-3 mb-0 text-center">4 new messages</h6>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-                <i class="mdi mdi-bell-outline"></i>
-                <span class="count-symbol bg-danger"></span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                <h6 class="p-3 mb-0 bg-primary text-white py-4">Notifications</h6>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-success">
-                      <i class="mdi mdi-calendar"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject font-weight-normal mb-1">Event today</h6>
-                    <p class="text-gray ellipsis mb-0"> Just a reminder that you have an event today </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-warning">
-                      <i class="mdi mdi-settings"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject font-weight-normal mb-1">Settings</h6>
-                    <p class="text-gray ellipsis mb-0"> Update dashboard </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-info">
-                      <i class="mdi mdi-link-variant"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject font-weight-normal mb-1">Launch Admin</h6>
-                    <p class="text-gray ellipsis mb-0"> New admin wow! </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <h6 class="p-3 mb-0 text-center">See all notifications</h6>
-              </div>
-            </li>
           </ul>
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>
@@ -224,12 +92,6 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
             <li class="nav-item nav-category">Main</li>
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">
-                <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-                <span class="menu-title">Dashboard</span>
-              </a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
@@ -251,12 +113,7 @@
               </a>
               <div class="collapse" id="ui-basic2">
                 <ul class="nav flex-column sub-menu">
-                  <b>Transacciones Cotidianas</b>
-                  <li class="nav-item"> <a class="nav-link" href="{{url('calculo')}}"> Salario</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> CestaTikect </a></li>
-                  <b>Transacciones Eventuales</b>
-                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> #</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{url('#')}}"> # </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('calculo')}}"> Cálculo de Nómina</a></li>
                 </ul>
               </div>
             </li>
@@ -323,19 +180,6 @@
             </li>
             <li class="nav-item sidebar-user-actions">
               <div class="sidebar-user-menu">
-                <a href="#" class="nav-link"><i class="mdi mdi-settings menu-icon"></i>
-                  <span class="menu-title">Settings</span>
-                </a>
-              </div>
-            </li>
-            <li class="nav-item sidebar-user-actions">
-              <div class="sidebar-user-menu">
-                <a href="#" class="nav-link"><i class="mdi mdi-speedometer menu-icon"></i>
-                  <span class="menu-title">Take Tour</span></a>
-              </div>
-            </li>
-            <li class="nav-item sidebar-user-actions">
-              <div class="sidebar-user-menu">
                 <a href="{{ route('login.destroy') }}" class="nav-link"><i class="mdi mdi-logout menu-icon"></i>
                   <span class="menu-title">Cerrar Sesión</span></a>
               </div>
@@ -358,7 +202,6 @@
         </div>
       </div>
           <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
           <footer class="footer">
             <div class="footer-inner-wraper">
               <div class="d-sm-flex justify-content-center justify-content-sm-between">
@@ -367,6 +210,7 @@
                 </div>
             </div>
           </footer>
+          <!-- partial:partials/_footer.html -->
           <!-- partial -->
         </div>
         <!-- main-panel ends -->

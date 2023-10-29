@@ -34,23 +34,13 @@
                     <td>{{ $user->Nombre_Usuario }}</td>
                     <td>{{ $user->id_roles }}</td>
                     <td>
-                        <a href="#" class="btn btn-warning">
-                            Editar
-                        </a>
-                        |
                         <form action="#" class="d-inline" method="post">
                             @csrf
                             {{ method_field('DELETE') }}
                             <input type="submit" onclick ="return confirm('¿Desea borrar registro?') " class="btn btn-danger"
                                 value="Borrar">
-                        </form> | <a href="{{ url('#') }}" class="btn btn-success">
-                            Ascender
-                        </a> | <a href="{{ url('#') }}" class="btn btn-light">
-                            Detalle
-                        </a>
-
+                        </form> 
                     </td>
-
                 </tr>
             @endforeach
         </tbody>

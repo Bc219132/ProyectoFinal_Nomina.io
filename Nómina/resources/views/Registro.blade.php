@@ -1,4 +1,4 @@
-@extends('layouts.Panel')
+@extends('layouts.Admin')
 
 @section('title', 'Registro')
 
@@ -47,7 +47,7 @@
                 <option value="{{ $rol['id'] }}">{{ $rol['Tipo_Rol'] }}</option>
             @endforeach
         </select>
-        <label class="form-label" for="form3Example4">Rol a Asiganar</label>
+        <label class="form-label" for="form3Example4">Rol a Asignar</label>
 
         @error('Roles')
             <p class="border border-red-500 rounded-md bg-red-100 w-full
