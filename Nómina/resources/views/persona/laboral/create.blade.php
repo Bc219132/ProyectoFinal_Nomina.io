@@ -12,8 +12,8 @@
                     <label for="TipoContrato" class="form-label text-black mt-3">Tipo de Contrato</label>
                         <select class="form-control" id="TipoContrato" name="TipoContrato"
                             required @isset($laboral) value="{{ $laboral->TipoContrato }}" @endisset>
-                            <option selected value="Fijo">Fijo</option>
-                            <option value="Contratado">Contratado</option>
+                            <option selected value="Contratado">Contratado</option>
+                            <option value="Fijo">Fijo</option>
                         </select>
                 </div>
                 <div class="col-12 col-sm-6">

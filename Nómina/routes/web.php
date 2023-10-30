@@ -107,6 +107,10 @@ Route::resource('dolar', DolarController::class)
 Route::resource('calculo', Calculo_adController::class)
     ->middleware('auth.Conjun');
 
+/******PDF VISTA CALCULOADS******/
+Route::get('generar/pdf', [App\Http\Controllers\Calculo_adController::class, 'pdf'])
+    ->name('generar.pdf');
+
 Route::get('/forgot-password', function () {
     return view('auth.forgot-password');
 })->middleware('guest')->name('password.request');

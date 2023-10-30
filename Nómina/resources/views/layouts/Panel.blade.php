@@ -395,5 +395,12 @@
           window.location.href = '/'; // página de inicio de sesión
       }
     </script>
+
+  <script>
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+  </script>
   </body>
 </html>

@@ -8,6 +8,7 @@ use App\Models\DatosLaborales;
 use App\Models\DetallesCargos;
 use App\Models\Dolar;
 use App\Models\Cestatikect;
+use PDF;
 
 class Calculo_adController extends Controller
 {
@@ -23,6 +24,16 @@ class Calculo_adController extends Controller
         ])->get();
 
         return view('calculo.salario.index', compact('calculos'));
+    }
+
+    public function pdf()
+    {
+        $calculos = Calculo_ads::paginate();
+        $pdf = PDF::loadView('calculo.pdf',['calculos'=>$calculos]) ;
+        return $pdf->downLoad('Calculo.pdf');
+
+        //return view('calculo.pdf', compact('calculos'));
+
     }
 
     public function create()

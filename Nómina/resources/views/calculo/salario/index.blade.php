@@ -23,11 +23,13 @@
                     <select name="year" id="selectYear" class="form-control">
                         @php
                             $currentYear = date('Y');
-                            $endYear = $currentYear + 10;
+                            $startYear = $currentYear - 1; // 1 año atrás
+                            $endYear = $currentYear + 9;   // 9 años adelante
                         @endphp
-                        @for ($year = $currentYear; $year <= $endYear; $year++)
+                        @for ($year = $startYear; $year <= $endYear; $year++)
                             <option value="{{ $year }}" @selected($year == request()->query('year'))>
-                                {{ $year }}</option>
+                                {{ $year }}
+                            </option>
                         @endfor
                     </select>
                 </div>
@@ -60,11 +62,11 @@
                 <div class="d-flex align-items-center">
                     <button type="submit" class="btn btn-secondary mr-2" name="action" value="calcular">Calcular</button>
                     <button type="submit" class="btn btn-secondary mr-2" name="action" value="buscar">Buscar</button>
-                    <button type="submit" class="btn btn-secondary mr-2">Generar total a
-                        pagar</button>
+            </form>
+
+                    <a href="{{ route('generar.pdf') }}" class="btn btn-secondary mr-2"> Generar PDF</a>
                 </div>
 
-            </form>
         </th>
     </ul>
 
@@ -161,5 +163,7 @@
             @endforeach
         </tbody>
     </table>
+
+    <!-- Mostrar los botones de numeración -->
 
 @endsection

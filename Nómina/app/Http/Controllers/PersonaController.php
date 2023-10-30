@@ -13,9 +13,8 @@ class PersonaController extends Controller
 {
     public function index()
     {
-        $datos['personas'] = Persona::paginate(15);
-        $personas = Persona::with('datosLaborales')->get();
-        return view('persona.index', $datos, compact('personas'));
+        $personas = Persona::with('datosLaborales')->paginate(10); // Pagina las personas con 15 registros por página
+        return view('persona.index', compact('personas'));
     }
 
     public function create()

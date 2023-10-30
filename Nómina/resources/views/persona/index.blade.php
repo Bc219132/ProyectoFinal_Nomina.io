@@ -82,9 +82,8 @@
                 </tr>
             @endforeach
         </tbody>
-
     </table>
-
+    {{ $personas->links('pagination::bootstrap-4') }}
     <script>
         window.addEventListener('popstate', function(event) {
             window.history.pushState(null, document.title, window.location.href);
