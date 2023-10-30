@@ -29,7 +29,7 @@ class Calculo_adController extends Controller
     public function pdf()
     {
         $calculos = Calculo_ads::paginate();
-        $pdf = PDF::loadView('calculo.pdf',['calculos'=>$calculos]) ;
+        $pdf = PDF::loadView('calculo.pdf', ['calculos' => $calculos]);
         return $pdf->downLoad('Calculo.pdf');
 
         //return view('calculo.pdf', compact('calculos'));
@@ -55,6 +55,8 @@ class Calculo_adController extends Controller
 
         if ($action == 'buscar') {
             return redirect()->route('calculo.index', compact('year', 'month', 'fortnight'));
+        } else if ($action == 'destroyPrepayroll') {
+            return redirect()->route('calculo.destroy.prepayroll', compact('year', 'month', 'fortnight'));
         }
 
         $datosLaborales = DatosLaborales::all('id')->map(function ($obj) {
@@ -67,12 +69,12 @@ class Calculo_adController extends Controller
 
             $tasadolar = $datosLaboral->detallesCargos->dolars->TasaActual; //Obtener Dolar
             $Sueldo = $datosLaboral->detallesCargos->Sueldo; //Obtener Sueldo
-            $SueldoMen_Bs = $tasadolar * $Sueldo; // Calcular Sueldo Mensual 
+            $SueldoMen_Bs = $tasadolar * $Sueldo; // Calcular Sueldo Mensual
             $MontoCesta = $datosLaboral->detallesCargos->cestaTickes->montoCk; //Obtener CestaTikect
             $CestaTickest = ($fortnight === 1) ? $tasadolar * $MontoCesta : 0;
             $DiasTrabajados = ($SueldoMen_Bs / 30) * 15; //Calcular DiasTrabajados
-            $Sso = (((650.00 * 12/52) * 0.04) * 5); //Calculo Sso
-            $Rpe = (((13000.00 * 12/52)* 0.0050) * 5); //Calculo Rpe
+            $Sso = (((650.00 * 12 / 52) * 0.04) * 5); //Calculo Sso
+            $Rpe = (((13000.00 * 12 / 52) * 0.0050) * 5); //Calculo Rpe
             $Faov =  $SueldoMen_Bs * 0.0100;
             $Vacaciones = 0;
             $Utilidades = 0;
@@ -84,7 +86,7 @@ class Calculo_adController extends Controller
                 'Año' => $year,
                 'Mes' => $month,
                 'Periodo' => $fortnight,
-                'id_datos_laborales' => $datosLaboral->id, 
+                'id_datos_laborales' => $datosLaboral->id,
                 'SueldoMen_Bs' => $SueldoMen_Bs,
                 'DiasTrabajados' => $DiasTrabajados,
                 'CestaTickes' => $CestaTickest,
@@ -97,7 +99,7 @@ class Calculo_adController extends Controller
 
                 //Total Asignación y Deducción
                 'TotalA' => $TotalA,
-                'TotalD' => $TotalD, 
+                'TotalD' => $TotalD,
                 'TotalAbonar' => $TotalA - $TotalD,
 
             ]);
@@ -119,5 +121,23 @@ class Calculo_adController extends Controller
     {
         //
 
+    }
+
+    public function destroyPrepayroll(Request $request)
+    {
+        $action = $request->input('action');
+
+
+        $year = $request->input('year');
+        $month = $request->input('month');
+        $fortnight = $request->input('fortnight');
+
+        Calculo_ads::where([
+            'Año' => $year,
+            'Mes' => $month,
+            'Periodo' => $fortnight
+        ])->delete();
+
+        return redirect()->route('calculo.index', compact('year', 'month', 'fortnight'));
     }
 }

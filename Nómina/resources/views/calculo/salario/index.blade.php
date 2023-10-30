@@ -24,7 +24,7 @@
                         @php
                             $currentYear = date('Y');
                             $startYear = $currentYear - 1; // 1 año atrás
-                            $endYear = $currentYear + 9;   // 9 años adelante
+                            $endYear = $currentYear + 9; // 9 años adelante
                         @endphp
                         @for ($year = $startYear; $year <= $endYear; $year++)
                             <option value="{{ $year }}" @selected($year == request()->query('year'))>
@@ -62,10 +62,12 @@
                 <div class="d-flex align-items-center">
                     <button type="submit" class="btn btn-secondary mr-2" name="action" value="calcular">Calcular</button>
                     <button type="submit" class="btn btn-secondary mr-2" name="action" value="buscar">Buscar</button>
+                    <button type="submit" class="btn btn-danger mr-2" name="action"
+                        value="destroyPrepayroll">Borrar</button>
             </form>
 
-                    <a href="{{ route('generar.pdf') }}" class="btn btn-secondary mr-2"> Generar PDF</a>
-                </div>
+            <a href="{{ route('generar.pdf') }}" class="btn btn-secondary mr-2"> Generar PDF</a>
+            </div>
 
         </th>
     </ul>
@@ -105,43 +107,38 @@
                             @endif
                         </td>
                         <td>
-                            @if (!empty($laboral->persona) && !empty($laboral->persona
-                                ->Cedula))
-                                {{ $laboral->persona->TipoDocumento}}
-                                {{ $laboral->persona->Cedula}}
+                            @if (!empty($laboral->persona) && !empty($laboral->persona->Cedula))
+                                {{ $laboral->persona->TipoDocumento }}
+                                {{ $laboral->persona->Cedula }}
                             @endif
                         </td>
                         <td>
-                            @if (!empty($laboral->detallesCargos) && !empty($laboral
-                                ->detallesCargos->TipoCargo))
+                            @if (!empty($laboral->detallesCargos) && !empty($laboral->detallesCargos->TipoCargo))
                                 {{ $laboral->detallesCargos->TipoCargo }}
                             @endif
                         </td>
                         <td>
-                            @if (!empty($laboral->calculos) && !empty($laboral->calculos
-                                ->SueldoMen_Bs))
-                                <b>Bs-</b> {{ str_replace(',', '.', number_format($laboral->calculos->SueldoMen_Bs, 
-                                2, ',', '.')) }}
-                            @endif   
+                            @if (!empty($laboral->calculos) && !empty($laboral->calculos->SueldoMen_Bs))
+                                <b>Bs-</b>
+                                {{ str_replace(',', '.', number_format($laboral->calculos->SueldoMen_Bs, 2, ',', '.')) }}
+                            @endif
                         </td>
                         <td>
-                            @if (!empty($laboral->calculos) && !empty($laboral->calculos
-                                ->TotalA))
-                                <b>Bs-</b> {{ str_replace(',', '.', number_format($laboral->calculos->TotalA, 
-                                2, '.', ',')) }}
-                            @endif    
+                            @if (!empty($laboral->calculos) && !empty($laboral->calculos->TotalA))
+                                <b>Bs-</b>
+                                {{ str_replace(',', '.', number_format($laboral->calculos->TotalA, 2, '.', ',')) }}
+                            @endif
                         </td>
                         <td>
-                            @if (!empty($laboral->calculos) && !empty($laboral->calculos
-                                    ->TotalD))
-                                    <b>Bs-</b> {{ str_replace(',', '.', number_format($laboral->calculos->TotalD, 
-                                    2, '.', ',')) }}
+                            @if (!empty($laboral->calculos) && !empty($laboral->calculos->TotalD))
+                                <b>Bs-</b>
+                                {{ str_replace(',', '.', number_format($laboral->calculos->TotalD, 2, '.', ',')) }}
                             @endif
                         </td>
                         <td>
                             @if (!empty($laboral->calculos) && !empty($laboral->calculos->TotalAbonar))
-                                <b>Bs-</b> {{ str_replace(',', '.', number_format($laboral->calculos->TotalAbonar, 
-                                2, '.', ',')) }}
+                                <b>Bs-</b>
+                                {{ str_replace(',', '.', number_format($laboral->calculos->TotalAbonar, 2, '.', ',')) }}
                             @endif
                         </td>
                         <td>

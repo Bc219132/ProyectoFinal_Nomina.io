@@ -104,7 +104,11 @@ Route::resource('dolar', DolarController::class)
     ->middleware('auth.Conjun');
 
 /******CALCULOS DE SALARIOS Y CESTA******/
+Route::get('calculo/prepayroll', [Calculo_adController::class, 'destroyPrepayroll'])
+    ->middleware('auth.Conjun')
+    ->name('calculo.destroy.prepayroll');
 Route::resource('calculo', Calculo_adController::class)
+    ->except('show')
     ->middleware('auth.Conjun');
 
 /******PDF VISTA CALCULOADS******/
