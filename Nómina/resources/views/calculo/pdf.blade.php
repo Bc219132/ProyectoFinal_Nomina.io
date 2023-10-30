@@ -1,20 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Reporte de Pago</title>
+
+    <style>
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+        }
+
+        .table th,
+        .table td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .table tbody+tbody {
+            border-top: 2px solid #dee2e6;
+        }
+
+        .table-sm th,
+        .table-sm td {
+            padding: 0.3rem;
+        }
+
+        .table-bordered {
+            border: 1px solid #dee2e6;
+        }
+
+        .table-bordered th,
+        .table-bordered td {
+            border: 1px solid #dee2e6;
+        }
+
+        .table-bordered thead th,
+        .table-bordered thead td {
+            border-bottom-width: 2px;
+        }
+
+        .table-borderless th,
+        .table-borderless td,
+        .table-borderless thead th,
+        .table-borderless tbody+tbody {
+            border: 0;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .table-hover tbody tr:hover {
+            color: #212529;
+            background-color: rgba(0, 0, 0, 0.075);
+        }
+
+        .table-primary,
+        .table-primary>th,
+        .table-primary>td {
+            background-color: #b8daff;
+        }
+
+        .table-primary th,
+        .table-primary td,
+        .table-primary thead th,
+        .table-primary tbody+tbody {
+            border-color: #7abaff;
+        }
+
+        .table-hover .table-primary:hover {
+            background-color: #9fcdff;
+        }
+
+        .table-hover .table-primary:hover>td,
+        .table-hover .table-primary:hover>th {
+            background-color: #9fcdff;
+        }
+
+        .table-secondary,
+        .table-secondary>th,
+        .table-secondary>td {
+            background-color: #d6d8db;
+        }
+
+        .table-secondary th,
+        .table-secondary td,
+        .table-secondary thead th,
+        .table-secondary tbody+tbody {
+            border-color: #b3b7bb;
+        }
+
+        .table-hover .table-secondary:hover {
+            background-color: #c8cbcf;
+        }
+
+        .table-hover .table-secondary:hover>td,
+        .table-hover .table-secondary:hover>th {
+            background-color: #c8cbcf;
+        }
+
+        .table-success,
+        .table-success>th,
+        .table-success>td {
+            background-color: #c3e6cb;
+        }
+
+        .table-success th,
+        .table-success td,
+        .table-success thead th,
+        .table-success tbody+tbody {
+            border-color: #8fd19e;
+        }
+
+        .table-hover .table-success:hover {
+            background-color: #b1dfbb;
+        }
+
+        .table-hover .table-success:hover>td,
+        .table-hover .table-success:hover>th {
+            background-color: #b1dfbb;
+        }
+
+        .table-info,
+        .table-info>th,
+        .table-info>td {
+            background-color: #bee5eb;
+        }
+
+        .table-info th,
+        .table-info td,
+        .table-info thead th,
+        .table-info tbody+tbody {
+            border-color: #86cfda;
+        }
+
+        .table-hover .table-info:hover {
+            background-color: #abdde5;
+        }
+
+        .table-hover .table-info:hover>td,
+        .table-hover .table-info:hover>th {
+            background-color: #abdde5;
+        }
+
+        .table-warning,
+        .table-warning>th,
+        .table-warning>td {
+            background-color: #ffeeba;
+        }
+
+        .table-warning th,
+        .table-warning td,
+        .table-warning thead th,
+        .table-warning tbody+tbody {
+            border-color: #ffdf7e;
+        }
+
+        .table-hover .table-warning:hover {
+            background-color: #ffe8a1;
+        }
+
+        .table-hover .table-warning:hover>td,
+        .table-hover .table-warning:hover>th {
+            background-color: #ffe8a1;
+        }
+
+        .table-danger,
+        .table-danger>th,
+        .table-danger>td {
+            background-color: #f5c6cb;
+        }
+
+        .table-danger th,
+        .table-danger td,
+        .table-danger thead th,
+        .table-danger tbody+tbody {
+            border-color: #ed969e;
+        }
+
+        .table-hover .table-danger:hover {
+            background-color: #f1b0b7;
+        }
+
+        .table-hover .table-danger:hover>td,
+        .table-hover .table-danger:hover>th {
+            background-color: #f1b0b7;
+        }
+
+        .table-light,
+        .table-light>th,
+        .table-light>td {
+            background-color: #fdfdfe;
+        }
+
+        .table-light th,
+        .table-light td,
+        .table-light thead th,
+        .table-light tbody+tbody {
+            border-color: #fbfcfc;
+        }
+
+        .table-hover .table-light:hover {
+            background-color: #ececf6;
+        }
+
+        .table-hover .table-light:hover>td,
+        .table-hover .table-light:hover>th {
+            background-color: #ececf6;
+        }
+
+        .table-dark,
+        .table-dark>th,
+        .table-dark>td {
+            background-color: #c6c8ca;
+        }
+
+        .table-dark th,
+        .table-dark td,
+        .table-dark thead th,
+        .table-dark tbody+tbody {
+            border-color: #95999c;
+        }
+
+        .table-hover .table-dark:hover {
+            background-color: #b9bbbe;
+        }
+
+        .table-hover .table-dark:hover>td,
+        .table-hover .table-dark:hover>th {
+            background-color: #b9bbbe;
+        }
+
+        .table-active,
+        .table-active>th,
+        .table-active>td {
+            background-color: rgba(0, 0, 0, 0.075);
+        }
+
+        .table-hover .table-active:hover {
+            background-color: rgba(0, 0, 0, 0.075);
+        }
+
+        .table-hover .table-active:hover>td,
+        .table-hover .table-active:hover>th {
+            background-color: rgba(0, 0, 0, 0.075);
+        }
+
+        .table .thead-dark th {
+            color: #fff;
+            background-color: #343a40;
+            border-color: #454d55;
+        }
+
+        .table .thead-light th {
+            color: #495057;
+            background-color: #e9ecef;
+            border-color: #dee2e6;
+        }
+
+        .table-dark {
+            color: #fff;
+            background-color: #343a40;
+        }
+
+        .table-dark th,
+        .table-dark td,
+        .table-dark thead th {
+            border-color: #454d55;
+        }
+
+        .table-dark.table-bordered {
+            border: 0;
+        }
+
+        .table-dark.table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .table-dark.table-hover tbody tr:hover {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.075);
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .table-responsive>.table-bordered {
+            border: 0;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .table-responsive>.table-bordered {
+            border: 0;
+        }
+    </style>
 </head>
+
 <body>
 
     <h2>Reporte de pago</h2>
 
     <h5>Fecha Actual: {{ \Carbon\Carbon::now()->format('d/m/Y') }}</h5>
 
-    <table class="table table-light">
+    <table class="table table-responsive">
 
-        <thead class="thed-light">
+        <thead>
             <tr>
             <tr></tr>
             <th>Fecha</th>
@@ -39,7 +347,11 @@
                 @if (empty($laboral->FechaEgreso) || $fechaEgreso->greaterThanOrEqualTo($fechaActual))
                     <tr>
                         <td>
-                            @if (!empty($laboral->calculos) && !empty($laboral->calculos->Año) && !empty($laboral->calculos->Mes) && !empty($laboral->calculos->Periodo))
+                            @if (
+                                !empty($laboral->calculos) &&
+                                    !empty($laboral->calculos->Año) &&
+                                    !empty($laboral->calculos->Mes) &&
+                                    !empty($laboral->calculos->Periodo))
                                 {{ $laboral->calculos->Año }}
                                 {{ $laboral->calculos->Mes }}
                                 {{ $laboral->calculos->Periodo }}
@@ -52,49 +364,51 @@
                             @endif
                         </td>
                         <td>
-                            @if (!empty($laboral->persona) && !empty($laboral->persona
-                                ->Cedula))
-                                {{ $laboral->persona->TipoDocumento}}
-                                {{ $laboral->persona->Cedula}}
+                            @if (!empty($laboral->persona) && !empty($laboral->persona->Cedula))
+                                {{ $laboral->persona->TipoDocumento }}
+                                {{ $laboral->persona->Cedula }}
                             @endif
                         </td>
                         <td>
-                            @if (!empty($laboral->detallesCargos) && !empty($laboral
-                                ->detallesCargos->TipoCargo))
+                            @if (!empty($laboral->detallesCargos) && !empty($laboral->detallesCargos->TipoCargo))
                                 {{ $laboral->detallesCargos->TipoCargo }}
                             @endif
                         </td>
                         <td>
-                            @if (!empty($laboral->calculos) && !empty($laboral->calculos
-                                ->SueldoMen_Bs))
-                                <b>Bs-</b> {{ str_replace(',', '.', number_format($laboral->calculos->SueldoMen_Bs, 
-                                2, ',', '.')) }}
-                            @endif   
+                            @if (!empty($laboral->calculos) && !empty($laboral->calculos->SueldoMen_Bs))
+                                <b>Bs-</b>
+                                {{ number_format($laboral->calculos->SueldoMen_Bs, 2, ',', '.') }}
+                            @endif
                         </td>
                         <td>
-                            @if (!empty($laboral->calculos) && !empty($laboral->calculos
-                                ->TotalA))
-                                <b>Bs-</b> {{ str_replace(',', '.', number_format($laboral->calculos->TotalA, 
-                                2, '.', ',')) }}
-                            @endif    
+                            @if (!empty($laboral->calculos) && !empty($laboral->calculos->TotalA))
+                                <b>Bs-</b>
+                                {{ number_format($laboral->calculos->TotalA, 2, ',', '.') }}
+                            @endif
                         </td>
                         <td>
-                            @if (!empty($laboral->calculos) && !empty($laboral->calculos
-                                    ->TotalD))
-                                    <b>Bs-</b> {{ str_replace(',', '.', number_format($laboral->calculos->TotalD, 
-                                    2, '.', ',')) }}
+                            @if (!empty($laboral->calculos) && !empty($laboral->calculos->TotalD))
+                                <b>Bs-</b>
+                                {{ number_format($laboral->calculos->TotalD, 2, ',', '.') }}
                             @endif
                         </td>
                         <td>
                             @if (!empty($laboral->calculos) && !empty($laboral->calculos->TotalAbonar))
-                                <b>Bs-</b> {{ str_replace(',', '.', number_format($laboral->calculos->TotalAbonar, 
-                                2, '.', ',')) }}
+                                <b>Bs-</b>
+                                {{ number_format($laboral->calculos->TotalAbonar, 2, ',', '.') }}
                             @endif
                         </td>
                     </tr>
                 @endif
             @endforeach
+            <tr class="table-active">
+                <td colspan="5">Total:</td>
+                <td><span class="fw-bold">Bs- </span>{{ number_format($total['TotalA'], 2, ',', '.') }}</td>
+                <td><span class="fw-bold">Bs- </span>{{ number_format($total['TotalD'], 2, ',', '.') }}</td>
+                <td><span class="fw-bold">Bs- </span>{{ number_format($total['TotalAbonar'], 2, ',', '.') }}</td>
+            </tr>
         </tbody>
     </table>
 </body>
+
 </html>

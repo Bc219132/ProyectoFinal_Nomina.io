@@ -15,7 +15,7 @@
         </i>
         <br>
         <th>
-            <form class="d-flex" method="POST" action="{{ route('calculo.store') }}">
+            <form class="d-flex" method="POST" action="{{ route('calculo.handler') }}">
                 @csrf
                 <!-- Formulario para seleccionar el año -->
                 <div class="form-group mr-2">
@@ -24,7 +24,7 @@
                         @php
                             $currentYear = date('Y');
                             $startYear = $currentYear - 1; // 1 año atrás
-                            $endYear = $currentYear + 9;   // 9 años adelante
+                            $endYear = $currentYear + 9; // 9 años adelante
                         @endphp
                         @for ($year = $startYear; $year <= $endYear; $year++)
                             <option value="{{ $year }}" @selected($year == request()->query('year'))>
@@ -62,10 +62,12 @@
                 <div class="d-flex align-items-center">
                     <button type="submit" class="btn btn-secondary mr-2" name="action" value="calcular">Calcular</button>
                     <button type="submit" class="btn btn-secondary mr-2" name="action" value="buscar">Buscar</button>
+                    <button type="submit" class="btn btn-danger mr-2" name="action"
+                        value="destroyPrepayroll">Borrar</button>
+                    <button class="btn btn-secondary mr-2" name="action" value="pdf"> Generar PDF</button>
             </form>
 
-                    <a href="{{ route('generar.pdf') }}" class="btn btn-secondary mr-2"> Generar PDF</a>
-                </div>
+            </div>
 
         </th>
     </ul>
@@ -74,9 +76,7 @@
 
     <table class="table table-light">
 
-        <thead class="thed-light">
-            <tr>
-            <tr></tr>
+        <thead>
             <th>Empleado</th>
             <th>Cédula</th>
             <th>Cargo</th>
@@ -85,7 +85,6 @@
             <th>Deducción</th>
             <th>Monto a Pagar</th>
             <th>Opciones</th>
-            </tr>
         </thead>
 
         <tbody>
@@ -105,58 +104,39 @@
                             @endif
                         </td>
                         <td>
-                            @if (!empty($laboral->persona) && !empty($laboral->persona
-                                ->Cedula))
-                                {{ $laboral->persona->TipoDocumento}}
-                                {{ $laboral->persona->Cedula}}
+                            @if (!empty($laboral->persona) && !empty($laboral->persona->Cedula))
+                                {{ $laboral->persona->TipoDocumento }}
+                                {{ $laboral->persona->Cedula }}
                             @endif
                         </td>
                         <td>
-                            @if (!empty($laboral->detallesCargos) && !empty($laboral
-                                ->detallesCargos->TipoCargo))
+                            @if (!empty($laboral->detallesCargos) && !empty($laboral->detallesCargos->TipoCargo))
                                 {{ $laboral->detallesCargos->TipoCargo }}
                             @endif
                         </td>
                         <td>
-                            @if (!empty($laboral->calculos) && !empty($laboral->calculos
-                                ->SueldoMen_Bs))
-                                <b>Bs-</b> {{ str_replace(',', '.', number_format($laboral->calculos->SueldoMen_Bs, 
-                                2, ',', '.')) }}
-                            @endif   
+                            @if (!empty($laboral->calculos) && !empty($laboral->calculos->SueldoMen_Bs))
+                                <b>Bs-</b>
+                                {{ str_replace(',', '.', number_format($laboral->calculos->SueldoMen_Bs, 2, ',', '.')) }}
+                            @endif
                         </td>
                         <td>
-                            @if (!empty($laboral->calculos) && !empty($laboral->calculos
-                                ->TotalA))
-                                <b>Bs-</b> {{ str_replace(',', '.', number_format($laboral->calculos->TotalA, 
-                                2, '.', ',')) }}
-                            @endif    
+                            @if (!empty($laboral->calculos) && !empty($laboral->calculos->TotalA))
+                                <b>Bs-</b>
+                                {{ str_replace(',', '.', number_format($laboral->calculos->TotalA, 2, '.', ',')) }}
+                            @endif
                         </td>
                         <td>
-                            @if (!empty($laboral->calculos) && !empty($laboral->calculos
-                                    ->TotalD))
-                                    <b>Bs-</b> {{ str_replace(',', '.', number_format($laboral->calculos->TotalD, 
-                                    2, '.', ',')) }}
+                            @if (!empty($laboral->calculos) && !empty($laboral->calculos->TotalD))
+                                <b>Bs-</b>
+                                {{ str_replace(',', '.', number_format($laboral->calculos->TotalD, 2, '.', ',')) }}
                             @endif
                         </td>
                         <td>
                             @if (!empty($laboral->calculos) && !empty($laboral->calculos->TotalAbonar))
-                                <b>Bs-</b> {{ str_replace(',', '.', number_format($laboral->calculos->TotalAbonar, 
-                                2, '.', ',')) }}
+                                <b>Bs-</b>
+                                {{ str_replace(',', '.', number_format($laboral->calculos->TotalAbonar, 2, '.', ',')) }}
                             @endif
-                        </td>
-                        <td>
-                            <form action="{{ url('#') }}" class="d-inline" method="post">
-                                @csrf
-                                {{ method_field('DELETE') }}
-                                <input type="submit" onclick="return confirm('¿Desea borrar registro?')"
-                                    class="btn btn-danger" value="+"> |
-                            </form>
-                            <form action="{{ url('#') }}" class="d-inline" method="post">
-                                @csrf
-                                {{ method_field('DELETE') }}
-                                <input type="submit" onclick="return confirm('¿Desea borrar registro?')"
-                                    class="btn btn-danger" value="-">
-                            </form>
                         </td>
                     </tr>
                 @endif
@@ -164,6 +144,5 @@
         </tbody>
     </table>
 
-    <!-- Mostrar los botones de numeración -->
 
 @endsection

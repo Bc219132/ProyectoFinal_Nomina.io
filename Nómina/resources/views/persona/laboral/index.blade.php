@@ -14,8 +14,7 @@
 
     <br><br>
     <table class="table table-light">
-
-        <thead class="thed-light">
+        <thead>
             <tr>
             <tr></tr>
             <th><b></b>Nombre y Apellido</b></th>
@@ -27,7 +26,9 @@
         </thead>
         <tbody>
             @foreach ($personas as $persona)
-                @if (empty($persona->datosLaborales) || empty($persona->datosLaborales->detallesCargos) || empty($persona->datosLaborales->detallesCargos->TipoCargo))
+                @if (empty($persona->datosLaborales) ||
+                        empty($persona->datosLaborales->detallesCargos) ||
+                        empty($persona->datosLaborales->detallesCargos->TipoCargo))
                     <tr>
                         <td>{{ $persona->PrimerNombre }}
                             {{ $persona->PrimerApellido }}
@@ -62,7 +63,7 @@
                             </td>
                         @endif
                     </tr>
-                @endif    
+                @endif
             @endforeach
         </tbody>
 
