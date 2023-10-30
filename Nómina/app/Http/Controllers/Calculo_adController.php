@@ -26,14 +26,32 @@ class Calculo_adController extends Controller
         return view('calculo.salario.index', compact('calculos'));
     }
 
-    public function pdf()
+    public function pdf(Request $request)
     {
-        $calculos = Calculo_ads::paginate();
-        $pdf = PDF::loadView('calculo.pdf', ['calculos' => $calculos]);
+        $year = $request->input('year');
+        $month = $request->input('month');
+        $fortnight = $request->input('fortnight');
+
+        $calculos = Calculo_ads::where([
+            'Año' => $year,
+            'Mes' => $month,
+            'Periodo' => $fortnight
+        ])->get();
+
+        $total = [
+            'TotalA' => 0,
+            'TotalD' => 0,
+            'TotalAbonar' => 0,
+        ];
+
+        foreach ($calculos as $calculo) {
+            $total['TotalA'] += $calculo['TotalA'];
+            $total['TotalD'] += $calculo['TotalD'];
+            $total['TotalAbonar'] += $calculo['TotalAbonar'];
+        }
+
+        $pdf = PDF::loadView('calculo.pdf', ['calculos' => $calculos, 'total' => $total]);
         return $pdf->downLoad('Calculo.pdf');
-
-        //return view('calculo.pdf', compact('calculos'));
-
     }
 
     public function create()
@@ -47,17 +65,9 @@ class Calculo_adController extends Controller
     public function store(Request $request)
     {
         $action = $request->input('action');
-
-
         $year = $request->input('year');
         $month = $request->input('month');
         $fortnight = $request->input('fortnight');
-
-        if ($action == 'buscar') {
-            return redirect()->route('calculo.index', compact('year', 'month', 'fortnight'));
-        } else if ($action == 'destroyPrepayroll') {
-            return redirect()->route('calculo.destroy.prepayroll', compact('year', 'month', 'fortnight'));
-        }
 
         $datosLaborales = DatosLaborales::all('id')->map(function ($obj) {
             return $obj->id;
@@ -82,7 +92,7 @@ class Calculo_adController extends Controller
             $TotalA = $DiasTrabajados + $Vacaciones + $CestaTickest + $Utilidades;
             $TotalD = $Ausencias + $Sso + $Sso + $Faov;
 
-            Calculo_ads::create([
+            Calculo_ads::firstOrCreate([
                 'Año' => $year,
                 'Mes' => $month,
                 'Periodo' => $fortnight,
@@ -139,5 +149,25 @@ class Calculo_adController extends Controller
         ])->delete();
 
         return redirect()->route('calculo.index', compact('year', 'month', 'fortnight'));
+    }
+
+    public function handler(Request $request)
+    {
+        $action = $request->input('action');
+
+
+        $year = $request->input('year');
+        $month = $request->input('month');
+        $fortnight = $request->input('fortnight');
+
+        if ($action == 'calcular') {
+            return $this->store($request);
+        } else if ($action == 'buscar') {
+            return redirect()->route('calculo.index', compact('year', 'month', 'fortnight'));
+        } else if ($action == 'destroyPrepayroll') {
+            return redirect()->route('calculo.destroy.prepayroll', compact('year', 'month', 'fortnight'));
+        } else if ($action == 'pdf') {
+            return redirect()->route('generar.pdf', compact('year', 'month', 'fortnight'));
+        }
     }
 }

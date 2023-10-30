@@ -18,7 +18,7 @@
     <br><br><br><br>
     <table class="table table-light">
 
-        <thead class="thed-light">
+        <thead>
             <tr>
             <tr></tr>
             <th>ID</th>
@@ -39,7 +39,7 @@
                             {{ method_field('DELETE') }}
                             <input type="submit" onclick ="return confirm('¿Desea borrar registro?') " class="btn btn-danger"
                                 value="Borrar">
-                        </form> 
+                        </form>
                     </td>
                 </tr>
             @endforeach

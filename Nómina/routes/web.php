@@ -104,6 +104,9 @@ Route::resource('dolar', DolarController::class)
     ->middleware('auth.Conjun');
 
 /******CALCULOS DE SALARIOS Y CESTA******/
+Route::post('calculo/handler', [Calculo_adController::class, 'handler'])
+    ->middleware('auth.Conjun')
+    ->name('calculo.handler');
 Route::get('calculo/prepayroll', [Calculo_adController::class, 'destroyPrepayroll'])
     ->middleware('auth.Conjun')
     ->name('calculo.destroy.prepayroll');
@@ -112,7 +115,7 @@ Route::resource('calculo', Calculo_adController::class)
     ->middleware('auth.Conjun');
 
 /******PDF VISTA CALCULOADS******/
-Route::get('generar/pdf', [App\Http\Controllers\Calculo_adController::class, 'pdf'])
+Route::get('generar/pdf', [Calculo_adController::class, 'pdf'])
     ->name('generar.pdf');
 
 Route::get('/forgot-password', function () {

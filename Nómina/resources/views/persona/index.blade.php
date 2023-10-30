@@ -19,7 +19,7 @@
     <br><br><br><br>
     <table class="table table-light">
 
-        <thead class="thed-light">
+        <thead>
             <tr>
             <tr></tr>
             <th>Nombre y Apellido</th>
@@ -68,14 +68,16 @@
                                 <form action="{{ url('/persona/' . $persona->id) }}" class="d-inline" method="post">
                                     @csrf
                                     {{ method_field('DELETE') }}
-                                    <input type="submit" onclick="return confirm('¿Desea borrar registro?')" class="btn btn-danger" value="BORRAR">
+                                    <input type="submit" onclick="return confirm('¿Desea borrar registro?')"
+                                        class="btn btn-danger" value="BORRAR">
                                 </form>
                             @endif
-                        </div> 
-                        
+                        </div>
+
                         <div style="display: inline-block;">
                             @isset($persona->datosLaborales)
-                             <a href="{{ route('laboral.edit', ['laboral' => $persona->datosLaborales->id]) }}" class="btn btn-warning">ESTAT/EDIC</a>
+                                <a href="{{ route('laboral.edit', ['laboral' => $persona->datosLaborales->id]) }}"
+                                    class="btn btn-warning">ESTAT/EDIC</a>
                             @endisset
                         </div>
                     </td>

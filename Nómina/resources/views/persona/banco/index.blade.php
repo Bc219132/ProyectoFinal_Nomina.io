@@ -20,7 +20,7 @@
     <br><br><br><br>
     <table class="table table-light">
 
-        <thead class="thed-light">
+        <thead>
             <tr>
             <tr></tr>
             <th>Códgio del Banco</th>
