@@ -179,7 +179,7 @@ Route::post('/reset-password', function (Request $request) {
 })->middleware('guest')->name('password.update');
 
 Route::get('backup', function () {
-    $success = Artisan::call('backup:run --only-db');
+    $success = Artisan::call('backup:run --only-db --disable-notifications');
     if (!$success) {
         return back()->with('message', 'Backup exitoso.');
     } else {
