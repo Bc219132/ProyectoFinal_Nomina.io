@@ -60,11 +60,11 @@
                 </div>
 
                 <div class="d-flex align-items-center">
-                    <button type="submit" class="btn btn-secondary mr-2" name="action" value="calcular">Calcular</button>
-                    <button type="submit" class="btn btn-secondary mr-2" name="action" value="buscar">Buscar</button>
+                    <button type="submit" class="btn btn-success mr-2" name="action" value="calcular">Calcular</button>
+                    <button type="submit" class="btn btn-primary mr-2" name="action" value="buscar">Buscar</button>
                     <button type="submit" class="btn btn-danger mr-2" name="action"
                         value="destroyPrepayroll">Borrar</button>
-                    <button class="btn btn-secondary mr-2" name="action" value="pdf"> Generar PDF</button>
+                    <button class="btn btn-info mr-2" name="action" value="pdf"> Generar PDF</button>
             </form>
 
             </div>

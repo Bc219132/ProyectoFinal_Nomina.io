@@ -18,6 +18,7 @@ use App\Http\Controllers\DolarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 /*
@@ -165,3 +166,13 @@ Route::post('/reset-password', function (Request $request) {
         ? redirect()->route('login.index')->with('status', __($status))
         : back()->withErrors(['correo' => [__($status)]]);
 })->middleware('guest')->name('password.update');
+
+Route::get('backup', function () {
+    $success = Artisan::call('backup:run --only-db');
+    if (!$success) {
+        return back()->with('message', 'Backup exitoso.');
+    } else {
+        return back()->with('message', 'Backup fallido.');
+    }
+})
+    ->name('backup');

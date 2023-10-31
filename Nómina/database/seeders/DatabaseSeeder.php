@@ -57,6 +57,6 @@ class DatabaseSeeder extends Seeder
             ]
         ]);
 
-        DatosLaborales::factory()->count(10)->create();
+        DatosLaborales::factory()->count(30)->create();
     }
 }
