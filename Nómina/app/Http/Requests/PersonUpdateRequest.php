@@ -30,10 +30,12 @@ class PersonUpdateRequest extends FormRequest
             'lastName' => 'required|alpha',
             'secondLastName' => 'nullable|alpha',
             'identificationType' => 'required|alpha',
-            'identification' => 'required|regex:/^\d*$/|between:7,8|unique:personas,Cedula,$id',
+            'identification' => "required|regex:/^\d*$/|between:7,8|unique:personas,Cedula,$id",
             'genre' => 'required|numeric|min:1',
             'birthdate' => 'required|before:tomorrow',
-            'rif' => 'required|regex:/^\d*$/|between:9,10|unique:personas,RIF,$id',
+            'rif' => "required|regex:/^\d*$/|between:9,10|unique:personas,RIF,$id",
+            'phone' => 'required|regex:/^\d*$/|size:11'
+
         ];
     }
 }

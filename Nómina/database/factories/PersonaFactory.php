@@ -25,6 +25,7 @@ class PersonaFactory extends Factory
             'FechaNacimiento' => fake()->date(),
             'TipoDocumento' => 'V',
             'id_generos' => Generos::inRandomOrder()->first(),
+            'NumTelef' => fake()->phoneNumber()
         ];
     }
 }

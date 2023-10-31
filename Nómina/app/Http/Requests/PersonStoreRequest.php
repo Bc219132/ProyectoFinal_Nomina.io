@@ -34,6 +34,7 @@ class PersonStoreRequest extends FormRequest
             'genre' => 'required|numeric|min:1',
             'birthdate' => 'required|before:tomorrow',
             'rif' => 'required|regex:/^\d*$/|between:9,10|unique:personas,RIF,$id',
+            'phone' => 'required|regex:/^\d*$/|size:11'
         ];
     }
 }
