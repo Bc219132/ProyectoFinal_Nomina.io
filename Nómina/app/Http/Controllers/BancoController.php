@@ -24,7 +24,7 @@ class BancoController extends Controller
         //
         //$datosBanco = request()->all();
         $datosBanco = request()->except('_token');
-        banco::insert($datosBanco);
+        Banco::insert($datosBanco);
         return redirect('banco')->with('mensaje', 'Guardado exitosamente');
     }
 

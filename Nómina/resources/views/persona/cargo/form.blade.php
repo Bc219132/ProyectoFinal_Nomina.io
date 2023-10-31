@@ -23,9 +23,16 @@
                         </select>
                         <br>
                         <label for="id_cestatikect ">CestaTikect</label>
-                        <select class="form-control" id="id_cestatikect" name="id_cestatikect" required>
+                        <select class="form-control" id="id_cestatikects" name="id_cestatikects" required>
                             @foreach ($cestatikects as $cestatikect)
                                 <option value="{{ $cestatikect->id }}">{{ $cestatikect->montoCk}}</option>
+                            @endforeach
+                        </select>
+                        <br>
+                        <label for="id_cestatikect ">Dolar</label>
+                        <select class="form-control" id="id_dolars" name="id_dolars" required>
+                            @foreach ($dolars as $dolar)
+                                <option value="{{ $dolar->id }}">{{ $dolar->TasaActual}}</option>
                             @endforeach
                         </select>
                      </div>

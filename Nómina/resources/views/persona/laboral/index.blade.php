@@ -4,11 +4,14 @@
 
 @section('Contenido')
 
-    @if (Session::has('mensaje'))
-        {{ Session::get('mensaje') }}
-    @endif
-
     <ul>
+        <i>
+            @if (Session::has('mensaje'))
+                <span style="color: green; font-weight: bold;">
+                    {{ Session::get('mensaje') }}
+                </span>
+            @endif
+        </i>
         <h2>Prospectos a Empleados </h2>
     </ul>
 

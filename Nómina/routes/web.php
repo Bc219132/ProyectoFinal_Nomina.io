@@ -15,6 +15,7 @@ use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\Calculo_adController;
 use App\Http\Controllers\DolarController;
 use App\Http\Controllers\CestaController;
+use App\Http\Controllers\NominaController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -121,6 +122,13 @@ Route::resource('calculo', Calculo_adController::class)
 /******PDF VISTA CALCULOADS******/
 Route::get('generar/pdf', [Calculo_adController::class, 'pdf'])
     ->name('generar.pdf');
+
+/******NÓMINA******/    
+Route::post('nomina/handler', [NominaController::class, 'handler'])
+    ->middleware('auth.Admin')
+    ->name('nomina.handler');
+Route::resource('nomina', NominaController::class)
+    ->middleware('auth.Admin');    
 
 Route::get('/forgot-password', function () {
     return view('auth.forgot-password');

@@ -46,12 +46,6 @@
                 {{ $message }} </p>
         @enderror
 
-        <!-- Confir Contraseña -->
-
-        <input type="password" name="password_Confirmation" id="password_Confirmation" class="form-control form-control-lg"
-            placeholder="Confirmar Contraseña" />
-        <label class="form-label" for="form3Example4">Confirmar Contraseña</label>
-
         <!-- Rol -->
 
         <select name="id_roles" class="form-control" id="id_roles">

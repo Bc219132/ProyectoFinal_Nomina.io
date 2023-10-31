@@ -4,11 +4,14 @@
 
 @section('Contenido')
 
-    @if (Session::has('mensaje'))
-        {{ Session::get('mensaje') }}
-    @endif
-
     <ul>
+        <i>
+            @if (Session::has('mensaje'))
+                <span style="color: green; font-weight: bold;">
+                    {{ Session::get('mensaje') }}
+                </span>
+            @endif
+        </i>
         <i>
             <h2>Listado de Bancos</h2>
         </i>

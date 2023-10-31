@@ -138,7 +138,7 @@
 
                         <li class="nav-item">
                             @if ($userRole !== '3')
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{url('nomina')}}">
                                     <span class="icon-bg"><i class="mdi mdi-chart-bar menu-icon"></i></span>
                                     <span class="menu-title">Generar Nómina</span>
                                 </a>

@@ -7,6 +7,7 @@ use App\Models\DetallesCargos;
 use App\Models\Sueldo;
 use App\Models\Cestatikect;
 use App\Models\Gerencia;
+use App\Models\Dolar;
 
 class CargoController extends Controller
 {
@@ -14,37 +15,40 @@ class CargoController extends Controller
 
         $gerencias = Gerencia::all();
         $cestatikects = Cestatikect::all();
+        $dolars = Dolar::all();
         $datos['cargos'] = DetallesCargos::paginate(15);
 
-        return view('persona.cargo.index', $datos, compact('gerencias','cestatikects'));
+        return view('persona.cargo.index', $datos, compact('gerencias','cestatikects','dolars'));
     }
 
     public function create(){
-        $gerencias = Gerencia::all();
-        return view('persona.cargo.create', compact('gerencias'));
+        return view('persona.cargo.create');
     }
      
-     public function store(Request $request)
-     {
-         $gerencias = null; // Define $gerencias si es necesario
-         // Resto del código
-     }
-     
-     public function edit($id)
-     {
-         $gerencias = null; // Define $gerencias si es necesario
-         // Resto del código
-     }
-     
-     public function update(Request $request, $id)
-     {
-         $gerencias = null; // Define $gerencias si es necesario
-         // Resto del código
-     }
-     
-     public function destroy($id)
-     {
-         $gerencias = null; // Define $gerencias si es necesario
-         // Resto del código
-     }
+    public function store(Request $request)
+    {
+        //
+        //$datosCargo = request()->all();
+        $datoscargo = request()->except('_token');
+        DetallesCargos::insert($datoscargo);
+        return redirect('cargo')->with('mensaje', ' Cargo Guardado exitosamente');
+    }
+
+    public function edit($id)
+    {
+       //
+    }
+
+    public function update(Request $request, $id)
+    {
+       //
+    }
+
+    public function destroy($id)
+    {
+        //
+        DetallesCargos::destroy($id);
+        return redirect('cargo');
+    }
+
 }
