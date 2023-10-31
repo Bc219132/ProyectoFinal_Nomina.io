@@ -22,6 +22,18 @@
                 {{ $message }} *</p>
         @enderror
 
+        <!-- Correo -->
+
+        <input type="text" name="email" id="email" class="form-control form-control-lg"
+            placeholder="Email" />
+        <label class="form-label" for="form3Example3">Correo</label>
+
+        @error('Nombre_Usuario')
+            <p class="border border-red-500 rounded-md bg-red-100 w-full
+              text-red-600 p-2 my-2">*
+                {{ $message }} *</p>
+        @enderror
+
         <!-- Contraseña -->
 
         <input type="password" name="password" id="password" class="form-control form-control-lg"

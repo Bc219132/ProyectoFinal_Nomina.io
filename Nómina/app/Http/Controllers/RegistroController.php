@@ -34,11 +34,18 @@ class RegistroController extends Controller
             'Nombre_Usuario' => 'required',
             'password' => 'required',
             'id_roles' => 'required',
+            'email' => 'required|email|unique:users,email'
         ]);
 
-        $user = user::create(request(['Nombre_Usuario', 'password', 'id_roles']));
+        $user = user::create(request(['Nombre_Usuario', 'password', 'id_roles','email']));
 
         
         return redirect('user')->with('mensaje', 'Usuario Creado Exitosamente');
+    }
+
+    public function destroy($id)
+    {
+        User::destroy($id);
+        return redirect('user')->with('mensaje', 'Usuario Eliminado exitosamente');
     }
 }

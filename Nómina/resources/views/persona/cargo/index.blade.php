@@ -26,7 +26,6 @@
             <th>ID</th>
             <th>Tipo de Cargo</th>
             <th>Sueldo</th>
-            <th>CestaTikect</th>
             <th>Gerencia</th>
             <th>Opción</th>
             </tr>
@@ -36,8 +35,7 @@
                 <td>{{ $cargo->id }}</td>
                 <td>{{ $cargo->TipoCargo }}</td>
                 <td>{{ $cargo->Sueldo }}</td>
-                <th>{{ $cargo->id_cestatikect }}</th>
-                <th>{{ $cargo->id_gerencia }}</th>
+                <th>{{ $cargo->gerencia->TipoGerencia}}</th>
                 <td>
                     <form action="{{ url('/cargo/' . $cargo->id) }}" class="d-inline" method="post">
                         @csrf

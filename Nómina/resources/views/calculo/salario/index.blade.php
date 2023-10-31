@@ -24,7 +24,7 @@
                         @php
                             $currentYear = date('Y');
                             $startYear = $currentYear - 1; // 1 año atrás
-                            $endYear = $currentYear + 9; // 9 años adelante
+                            $endYear = $currentYear + 1; // 1 años adelante
                         @endphp
                         @for ($year = $startYear; $year <= $endYear; $year++)
                             <option value="{{ $year }}" @selected($year == request()->query('year'))>

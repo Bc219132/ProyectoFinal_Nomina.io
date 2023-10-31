@@ -170,18 +170,13 @@
                         </a>
                         <div class="collapse" id="ui-basic3">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ url('genero') }}"> Nuevo Género
-                                    </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ url('banco') }}"> Nuevo Banco
-                                    </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ url('gerencia') }}"> Nueva
-                                        Gerencia </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ url('cargo') }}"> Descripción de
-                                        Cargo </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ url('dolar') }}"> Información
-                                        del Dolar</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('backup') }}">Respaldo</a>
-                                </li>
+                                <li class="nav-item"> <a class="nav-link" href="{{url('genero')}}"> Nuevo Género </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{url('banco')}}"> Nuevo Banco </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{url('gerencia')}}"> Nueva Gerencia </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{url('cargo')}}"> Descripción de Cargo </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{url('dolar')}}"> Información del Dolar</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{url('cesta')}}"> Información del CestaTicket</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('backup') }}">Respaldo</a></li>
                             </ul>
                         </div>
                     </li>

@@ -12,12 +12,20 @@ class Cargo extends Model
     protected $fillable = [
         'id',
         'TipoCargo',
-        'id_sueldo',
+        'Sueldo',
+        'id_gerencia',
+        'id_cestatikects',
+        'id_dolars',
+
         ];
 
-        public function Sueldo(){
+        public function cestatikect()
+        {
+            return $this->belongsTo(Cestatikect::class, 'id_cestatikects');
+        }
 
-            return $this->hasOne(Sueldo::class, 'id','id_sueldo');
-
+        public function gerencia()
+        {
+            return $this->belongsTo(Gerencia::class, 'id_gerencia');
         }
 }
