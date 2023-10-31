@@ -108,7 +108,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' =>  env('FAKER_LOCALE', 'es_ES'),
 
     /*
     |--------------------------------------------------------------------------
@@ -194,6 +194,6 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // ...
     ])->toArray(),
-    'PDF' => Barryvdh\DomPDF\facade::class,
+    'PDF' => Barryvdh\DomPDF\Facade::class,
 
 ];
