@@ -320,8 +320,6 @@
 
     <h5>Fecha Actual: {{ \Carbon\Carbon::now()->format('d/m/Y') }}</h5>
 
-    <h5>Tasa del Dolar: 45,25 </h5>
-
     <table class="table table-responsive">
 
         <thead>

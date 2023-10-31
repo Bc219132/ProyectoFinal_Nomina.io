@@ -37,7 +37,8 @@ class PersonaController extends Controller
             'Cedula' => $validated['identification'],
             'id_genero' => $validated['genre'],
             'FechaNacimiento' => $validated['birthdate'],
-            'RIF' => $validated['rif']
+            'RIF' => $validated['rif'],
+            'NumTelef' => $validated['phone']
         ];
         $person = Persona::create($data);
         return redirect("persona/$person->id/laboral/create")->with('mensaje', 'Empleado Agregado exitosamente');
@@ -47,7 +48,7 @@ class PersonaController extends Controller
     {
         $generos = Generos::all();
         $persona = Persona::findOrFail($id);
-        return view('persona.edit', compact('persona','generos'))->with('mensaje', 'Empleado Editado exitosamente');
+        return view('persona.edit', compact('persona', 'generos'))->with('mensaje', 'Empleado Editado exitosamente');
     }
 
     public function update(PersonUpdateRequest $request, $id)
@@ -62,7 +63,8 @@ class PersonaController extends Controller
             'Cedula' => $validated['identification'],
             'id_genero' => $validated['genre'],
             'FechaNacimiento' => $validated['birthdate'],
-            'RIF' => $validated['rif']
+            'RIF' => $validated['rif'],
+            'NumTelef' => $validated['phone']
         ];
         Persona::findOrFail($id)->update($data);
         return redirect('persona');

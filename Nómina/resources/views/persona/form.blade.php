@@ -67,7 +67,9 @@
         <label for="birthdate" class="form-label text-black mt-3">Fecha de nacimiento</label>
         @php
             // Calcula la fecha mínima (18 años atrás desde la fecha actual)
-            $fechaMinima = now()->subYears(18)->format('Y-m-d');
+            $fechaMinima = now()
+                ->subYears(18)
+                ->format('Y-m-d');
         @endphp
         <input type="date" max="{{ $fechaMinima }}" class="form-control" aria-label="Primer apellido"
             id="birthdate" name="birthdate" required
@@ -81,6 +83,14 @@
         <input type="text" class="form-control" aria-label="RIF" id="rif" name="rif" required
             pattern="\d{9,10}" @isset($persona) value="{{ $persona->RIF }}" @endisset>
         @error('rif')
+            <div class="d-block invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+    <div class="col-12 col-sm-6">
+        <label for="phone" class="form-label text-black mt-3">Teléfono</label>
+        <input type="text" class="form-control" aria-label="PHONE" id="phone" name="phone" required
+            pattern="\d{11,11}" @isset($persona) value="{{ $persona->NumTelef }}" @endisset>
+        @error('phone')
             <div class="d-block invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
