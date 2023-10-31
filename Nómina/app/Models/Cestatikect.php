@@ -9,6 +9,8 @@ class Cestatikect extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'id',
         'montoCk',

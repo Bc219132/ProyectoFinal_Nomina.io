@@ -16,10 +16,18 @@
                         <input type="text" class="form-control" name="Sueldo" id="Sueldo">
                         <br>
                         <label for="id_gerencia">Gerencia a pertenecer</label>
-                        <input type="text" class="form-control" name="id_gerencia" id="id_gerencia">
+                        <select class="form-control" id="id_gerencia" name="id_gerencia" required>
+                            @foreach ($gerencias as $gerencia)
+                                <option value="{{ $gerencia->id }}">{{ $gerencia->TipoGerencia}}</option>
+                            @endforeach
+                        </select>
                         <br>
                         <label for="id_cestatikect ">CestaTikect</label>
-                        <input type="text" class="form-control" name="id_cestatikect" id="id_cestatikect">
+                        <select class="form-control" id="id_cestatikect" name="id_cestatikect" required>
+                            @foreach ($cestatikects as $cestatikect)
+                                <option value="{{ $cestatikect->id }}">{{ $cestatikect->montoCk}}</option>
+                            @endforeach
+                        </select>
                      </div>
                      <button type="submit" class="btn btn-primary btn-lg"  
                      > Guardar </button>

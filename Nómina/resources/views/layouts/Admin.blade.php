@@ -157,6 +157,7 @@
                   <li class="nav-item"> <a class="nav-link" href="{{url('gerencia')}}"> Nueva Gerencia </a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{url('cargo')}}"> Descripción de Cargo </a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{url('dolar')}}"> Información del Dolar</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('cesta')}}"> Información del CestaTicket</a></li>
                 </ul>
               </div>
             </li>

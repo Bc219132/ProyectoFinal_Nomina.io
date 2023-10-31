@@ -14,6 +14,7 @@ use App\Http\Controllers\GerenciaController;
 use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\Calculo_adController;
 use App\Http\Controllers\DolarController;
+use App\Http\Controllers\CestaController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -90,7 +91,7 @@ Route::resource('persona.laboral', LaboralesController::class)
     ->shallow()
     ->middleware('auth.Conjun');
 
-/******VISTA CRUP GENERO||BANCO||GERENCIA||CARGO||DOLAR******/
+/******VISTA CRUP GENERO||BANCO||GERENCIA||CARGO||DOLAR||CESTA******/
 
 Route::resource('genero', GeneroController::class)
     ->middleware('auth.Conjun');
@@ -101,6 +102,8 @@ Route::resource('gerencia', GerenciaController::class)
 Route::resource('cargo', CargoController::class)
     ->middleware('auth.Conjun');
 Route::resource('dolar', DolarController::class)
+    ->middleware('auth.Conjun');
+    Route::resource('cesta', CestaController::class)
     ->middleware('auth.Conjun');
 
 /******CALCULOS DE SALARIOS Y CESTA******/

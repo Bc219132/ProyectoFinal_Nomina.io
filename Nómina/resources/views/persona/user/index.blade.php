@@ -34,7 +34,7 @@
                     <td>{{ $user->Nombre_Usuario }}</td>
                     <td>{{ $user->id_roles }}</td>
                     <td>
-                        <form action="#" class="d-inline" method="post">
+                        <form action="{{ url('/user/' . $user->id) }}" class="d-inline" method="post">
                             @csrf
                             {{ method_field('DELETE') }}
                             <input type="submit" onclick ="return confirm('¿Desea borrar registro?') " class="btn btn-danger"
