@@ -84,7 +84,6 @@
             <th>Asignación</th>
             <th>Deducción</th>
             <th>Monto a Pagar</th>
-            <th>Opciones</th>
         </thead>
 
         <tbody>
@@ -116,25 +115,25 @@
                         </td>
                         <td>
                             @if (!empty($laboral->calculos) && !empty($laboral->calculos->SueldoMen_Bs))
-                                <b>Bs-</b>
+                                <b>Bs</b>
                                 {{ str_replace(',', '.', number_format($laboral->calculos->SueldoMen_Bs, 2, ',', '.')) }}
                             @endif
                         </td>
                         <td>
                             @if (!empty($laboral->calculos) && !empty($laboral->calculos->TotalA))
-                                <b>Bs-</b>
+                                <b>Bs</b>
                                 {{ str_replace(',', '.', number_format($laboral->calculos->TotalA, 2, '.', ',')) }}
                             @endif
                         </td>
                         <td>
                             @if (!empty($laboral->calculos) && !empty($laboral->calculos->TotalD))
-                                <b>Bs-</b>
+                                <b>Bs</b>
                                 {{ str_replace(',', '.', number_format($laboral->calculos->TotalD, 2, '.', ',')) }}
                             @endif
                         </td>
                         <td>
                             @if (!empty($laboral->calculos) && !empty($laboral->calculos->TotalAbonar))
-                                <b>Bs-</b>
+                                <b>Bs</b>
                                 {{ str_replace(',', '.', number_format($laboral->calculos->TotalAbonar, 2, '.', ',')) }}
                             @endif
                         </td>

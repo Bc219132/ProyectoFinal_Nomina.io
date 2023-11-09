@@ -61,7 +61,7 @@
 
                 <div class="d-flex align-items-center">
                     <button type="submit" class="btn btn-secondary mr-2" name="action" value="buscar">Buscar</button>
-                    <button class="btn btn-secondary mr-2" name="action" value="pdf"> Generar PDF</button>
+                    <button class="btn btn-secondary mr-2" name="action" value="pdf"> Generar </button>
             </form>
 
             </div>
@@ -81,7 +81,6 @@
             <th>Asignación</th>
             <th>Deducción</th>
             <th>Monto a Pagar</th>
-            <th>Opciones</th>
         </thead>
 
         <tbody>

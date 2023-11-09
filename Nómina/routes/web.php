@@ -128,7 +128,11 @@ Route::post('nomina/handler', [NominaController::class, 'handler'])
     ->middleware('auth.Admin')
     ->name('nomina.handler');
 Route::resource('nomina', NominaController::class)
-    ->middleware('auth.Admin');    
+    ->middleware('auth.Admin'); 
+    
+/******PDF VISTA CALCULOADS******/
+Route::get('generar2/pdf', [NominaController::class, 'pdf'])
+    ->name('generar2.pdf');
 
 Route::get('/forgot-password', function () {
     return view('auth.forgot-password');

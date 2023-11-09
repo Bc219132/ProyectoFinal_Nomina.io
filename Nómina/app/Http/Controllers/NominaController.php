@@ -51,8 +51,8 @@ class NominaController extends Controller
             $total['TotalAbonar'] += $calculo['TotalAbonar'];
         }
 
-        $pdf = PDF::loadView('calculo.pdf', ['calculos' => $calculos, 'total' => $total]);
-        return $pdf->download('Calculo.pdf');
+        $pdf = PDF::loadView('nomina.pdf', ['calculos' => $calculos, 'total' => $total]);
+        return $pdf->download('nomina.pdf');
     }
 
     public function create()
@@ -168,7 +168,7 @@ class NominaController extends Controller
         } else if ($action == 'destroyPrepayroll') {
             return redirect()->route('nomina.destroy.prepayroll', compact('year', 'month', 'fortnight'));
         } else if ($action == 'pdf') {
-            return redirect()->route('generar.pdf', compact('year', 'month', 'fortnight'));
+            return redirect()->route('generar2.pdf', compact('year', 'month', 'fortnight'));
         }
     }
 }
