@@ -27,19 +27,23 @@ class RegistroController extends Controller
 
     public function store()
     {
-        //$datosuser = request()->except('_token','password_Confirmation');
-        //User::insert($datosuser);
-        //return redirect('persona/user')->with('mensaje','Usuario Agregado exitosamente');
+        $messages = [
+            'password.regex' => 'La contraseña debe contener al menos un carácter especial como !@#$%^&*()\-_=+{};:,<.>',
+        ];
+
         $this->validate(request(), [
             'Nombre_Usuario' => 'required',
-            'password' => 'required',
+            'password' => [
+                'required',
+                'regex:/^(?=.*[!@#$%^&*()\-_=+{};:,<.>])/', // Al menos un carácter especial permitido
+                'min:8', // Mínimo 8 caracteres
+            ],
             'id_roles' => 'required',
             'email' => 'required|email|unique:users,email'
-        ]);
+        ], $messages);
 
-        $user = user::create(request(['Nombre_Usuario', 'password', 'id_roles','email']));
+        $user = User::create(request(['Nombre_Usuario', 'password', 'id_roles', 'email']));
 
-        
         return redirect('user')->with('mensaje', 'Usuario Creado Exitosamente');
     }
 
